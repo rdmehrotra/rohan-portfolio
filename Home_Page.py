@@ -1,5 +1,41 @@
 import streamlit as st
 
+import base64
+
+def set_bg(image_file):
+    with open(image_file, "rb") as f:
+        data = base64.b64encode(f.read()).decode()
+
+    st.markdown(f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/png;base64,{data}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }}
+    </style>
+    """, unsafe_allow_html=True)
+
+set_bg("images/background.jpg")
+
+st.markdown("""
+<style>
+.stApp::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 15, 25, 0.7);
+    z-index: -1;
+}
+</style>
+""", unsafe_allow_html=True)
+
+
+
 st.markdown("""
 <style>
 .hero {
