@@ -1,0 +1,43 @@
+{
+  "crossword_times": [
+    ["2024-01", 165],
+    ["2024-02", 156],
+    ["2024-03", 140],
+    ["2024-04", 130],
+    ["2024-05", 120],
+    ["2024-06", 125],
+    ["2024-07", 110],
+    ["2024-08", 105],
+    ["2024-09", 100],
+    ["2024-10", 90],
+    ["2024-11", 80],
+    ["2024-12", 75],
+    ["2025-01", 75],
+    ["2025-02", 70],
+    ["2025-03", 65],
+    ["2025-04", 65],
+    ["2025-05", 60],
+    ["2025-06", 50]
+  ],
+  "baking_ratings": [
+    {"year": 2015, "rating": 3, "image": "worst_cookies.jpg", "caption": "Note: the particular reason for the low rating was because I forgot sugar, hence the brilliant 9 year old me thought I can simply throw sugar on them after baking like you do with salt."},
+    {"year": 2016, "rating": 6.5, "image": "snickerdoodles.jpg", "caption": "First attempt at snickerdoodles."},
+    {"year": 2017, "rating": 7, "image": "first_cupcakes.jpg", "caption": "Not the worst piping skills for an 11 year old."},
+    {"year": 2018, "rating": 8, "image": "donuts.jpg", "caption": "donuts."},
+    {"year": 2019, "rating": 7.75, "image": "banana_bread.jpg", "caption": "BANANA BREADDDDD"},
+    {"year": 2020, "rating": 8, "image": "muffins.jpg", "caption": "Blueberry Muffins, got sick of making cookies."},
+    {"year": 2021, "rating": 9, "image": "more_cookies.jpg", "caption": "Just kidding! I would NEVER get sick of making cookies. 😋"},
+    {"year": 2022, "rating": 9, "image": "first_cake.jpg", "caption": "Getting better."},
+    {"year": 2023, "rating": 9.5, "image": "pastries.jpg", "caption": "guava pastries becaause I was bored."},
+    {"year": 2024, "rating": 10, "image": "best_cake.jpg", "caption": "Grad party! Can you guess where I'm going to school?"}
+  ],
+  "book_ratings_2025": [
+    {"title": "The Overstory", "rating": 9},
+    {"title": "The Burnout Society", "rating": 10},
+    {"title": "Atomic Habits", "rating": 9},
+    {"title": "Looking for Alaska", "rating": 8},
+    {"title": "Flowers for Algernon", "rating": 7.5},
+    {"title": "The Alchemist", "rating": 7}
+  ]
+  
+}
