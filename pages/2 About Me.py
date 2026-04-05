@@ -37,14 +37,6 @@ st.markdown("""
     border-radius: 999px;
 }
 
-div[data-testid="stVerticalBlockBorderWrapper"] {
-    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
-    border: 1px solid rgba(0,229,255,0.18) !important;
-    border-radius: 24px !important;
-    padding: 1.2rem !important;
-    box-shadow: 0 0 18px rgba(0,229,255,0.08);
-}
-
 div[data-testid="stImage"] img {
     border-radius: 18px;
 }
@@ -97,7 +89,7 @@ st.markdown(
 st.markdown('<div class="glow-line"></div>', unsafe_allow_html=True)
 
 
-def cropped_image(path, size):
+def cropped_image(path, size, centering=(0.5, 0.5)):
     if not os.path.exists(path):
         return None
 
@@ -107,7 +99,7 @@ def cropped_image(path, size):
     except AttributeError:
         resample = Image.LANCZOS
 
-    return ImageOps.fit(img, size, method=resample, centering=(0.5, 0.5))
+    return ImageOps.fit(img, size, method=resample, centering=centering)
 
 
 # HERO SECTION
@@ -115,7 +107,7 @@ left, right = st.columns([1.05, 1.35], gap="large", vertical_alignment="center")
 
 with left:
     with st.container(border=True):
-        hero_img = cropped_image("images/headshot.jpg", (1200, 1400))
+        hero_img = cropped_image("images/headshot.jpg", (1200, 1400), centering=(0.5, 0.4))
         if hero_img is not None:
             st.image(hero_img, use_container_width=True)
 
@@ -146,7 +138,7 @@ col1, col2 = st.columns(2, gap="large")
 with col1:
     with st.container(border=True):
         st.markdown('<div class="card-title">Carolina Hurricanes</div>', unsafe_allow_html=True)
-        hurricanes_img = cropped_image("images/hurricanes.jpg", (1400, 900))
+        hurricanes_img = cropped_image("images/hurricanes.jpg", (1400, 900), centering=(0.5, 0.5))
         if hurricanes_img is not None:
             st.image(hurricanes_img, use_container_width=True)
         st.markdown(
@@ -163,7 +155,7 @@ with col1:
 with col2:
     with st.container(border=True):
         st.markdown('<div class="card-title">Georgia Tech</div>', unsafe_allow_html=True)
-        tech_img = cropped_image("images/gtcap.jpg", (1200, 900))
+        tech_img = cropped_image("images/gtcap.jpg", (1200, 900), centering=(0.5, 0.42))
         if tech_img is not None:
             st.image(tech_img, use_container_width=True)
         st.markdown(
@@ -185,7 +177,7 @@ col3, col4 = st.columns(2, gap="large")
 with col3:
     with st.container(border=True):
         st.markdown('<div class="card-title">Music</div>', unsafe_allow_html=True)
-        music_img = cropped_image("images/music.jpg", (1200, 900))
+        music_img = cropped_image("images/music.jpg", (1000, 1350), centering=(0.5, 0.18))
         if music_img is not None:
             st.image(music_img, use_container_width=True)
         st.markdown(
@@ -203,8 +195,8 @@ with col4:
     with st.container(border=True):
         st.markdown('<div class="card-title">Baking and coffee</div>', unsafe_allow_html=True)
 
-        bake8_img = cropped_image("images/bake8.jpg", (1200, 700))
-        bake9_img = cropped_image("images/bake9.jpg", (1200, 700))
+        bake8_img = cropped_image("images/bake8.jpg", (1200, 700), centering=(0.5, 0.5))
+        bake9_img = cropped_image("images/bake9.jpg", (1200, 700), centering=(0.5, 0.35))
 
         if bake8_img is not None:
             st.image(bake8_img, use_container_width=True)
