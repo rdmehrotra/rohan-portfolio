@@ -99,9 +99,6 @@ with right:
             I really enjoy the balance between technical problem-solving and creativity, which is probably
             why I care just as much about how something feels as I do about whether it works.
             <br><br>
-            Outside of engineering, a lot of the things I love most are the ones that make life feel a little
-            warmer and more fun — baking, coffee, music, and the kinds of small traditions and hobbies that
-            people carry with them over time.
             </div>
             """,
             unsafe_allow_html=True
