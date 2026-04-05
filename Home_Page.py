@@ -73,4 +73,19 @@ with open("assets/resume.pdf", "rb") as file:
         file_name="Rohan_Mehrotra_Resume.pdf",
         mime="application/pdf"
     )
+    st.markdown("""
+<a href="https://www.linkedin.com/in/YOUR-LINKEDIN/" target="_blank">
+    <button style="
+        background-color:#0A66C2;
+        color:white;
+        border:none;
+        padding:10px 20px;
+        border-radius:8px;
+        font-size:16px;
+        cursor:pointer;">
+        🔗 LinkedIn
+    </button>
+</a>
+""", unsafe_allow_html=True)
+
 """, unsafe_allow_html=True)
