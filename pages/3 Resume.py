@@ -65,7 +65,7 @@ div[data-testid="stDownloadButton"] > button:hover {
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="resume-title">📄 Resume</div>', unsafe_allow_html=True)
+st.markdown('<div class="resume-title">Resume</div>', unsafe_allow_html=True)
 
 with open("assets/rohan_mehrotra_resume.pdf", "rb") as f:
     pdf_bytes = f.read()
@@ -77,7 +77,7 @@ with center:
 
     with col1:
         st.download_button(
-            label="📄 Download Resume",
+            label="Download Resume",
             data=pdf_bytes,
             file_name="Rohan_Mehrotra_Resume.pdf",
             mime="application/pdf",
