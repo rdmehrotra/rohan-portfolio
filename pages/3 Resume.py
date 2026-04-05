@@ -1,5 +1,4 @@
 import streamlit as st
-import base64
 
 st.title("📄 Resume")
 
@@ -7,30 +6,23 @@ st.title("📄 Resume")
 with open("assets/rohan_mehrotra_resume.pdf", "rb") as f:
     pdf_bytes = f.read()
 
-# ---------- DOWNLOAD BUTTON ----------
-st.download_button(
-    label="📄 Download Resume",
-    data=pdf_bytes,
-    file_name="Rohan_Mehrotra_Resume.pdf",
-    mime="application/pdf"
-)
+# ---------- BUTTONS ----------
+col1, col2 = st.columns(2)
+
+with col1:
+    st.download_button(
+        label="📄 Download Resume",
+        data=pdf_bytes,
+        file_name="Rohan_Mehrotra_Resume.pdf",
+        mime="application/pdf"
+    )
+
+with col2:
+    st.link_button("🔍 View Resume", "/assets/rohan_mehrotra_resume.pdf")
 
 st.markdown("##")
 
-# ---------- SAFE EMBED (WORKS ON STREAMLIT CLOUD) ----------
-base64_pdf = base64.b64encode(pdf_bytes).decode('utf-8')
-
-pdf_display = f"""
-<embed 
-    src="data:application/pdf;base64,{base64_pdf}" 
-    width="100%" 
-    height="800px" 
-    type="application/pdf">
-"""
-
-st.markdown(pdf_display, unsafe_allow_html=True)
-
-# ---------- LINKEDIN BUTTON ----------
+# ---------- LINKEDIN ----------
 st.markdown("""
 <a href="https://www.linkedin.com/in/rohan-d-mehrotra/" target="_blank" style="text-decoration:none;">
     <div style="
