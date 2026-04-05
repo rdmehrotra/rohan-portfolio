@@ -34,6 +34,14 @@ st.markdown("""
     box-shadow: 0 0 14px rgba(0,229,255,0.8);
     border-radius: 999px;
 }
+
+.photo-caption {
+    color: #cbd5e1;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-top: 0.45rem;
+    margin-bottom: 0.75rem;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -45,21 +53,26 @@ st.markdown(
 st.markdown('<div class="glow-line"></div>', unsafe_allow_html=True)
 
 gallery_items = [
-    "images/bake1.jpg",
-    "images/bake2.jpg",
-    "images/bake3.jpg",
-    "images/bake4.jpg",
-    "images/bake5.jpg",
-    "images/bake6.jpg",
-    "images/bake7.jpg",
-    "images/bake8.jpg",
-    "images/bake9.jpg",
+    {"image": "images/bake1.jpg", "caption": ""},
+    {"image": "images/bake2.jpg", "caption": ""},
+    {"image": "images/bake3.jpg", "caption": ""},
+    {"image": "images/bake4.jpg", "caption": ""},
+    {"image": "images/bake5.jpg", "caption": ""},
+    {"image": "images/bake6.jpg", "caption": ""},
+    {"image": "images/bake7.jpg", "caption": ""},
+    {"image": "images/bake8.jpg", "caption": "I’m a huge latte and coffee person, so this one had to make the gallery."},
+    {"image": "images/bake9.jpg", "caption": "I’ve been baking since I was 9 years old!"},
 ]
 
 for row_start in range(0, len(gallery_items), 3):
     cols = st.columns(3, gap="small")
     row_items = gallery_items[row_start:row_start + 3]
 
-    for col, image_path in zip(cols, row_items):
+    for col, item in zip(cols, row_items):
         with col:
-            st.image(image_path, use_container_width=True)
+            st.image(item["image"], use_container_width=True)
+            if item["caption"]:
+                st.markdown(
+                    f'<div class="photo-caption">{item["caption"]}</div>',
+                    unsafe_allow_html=True
+                )
