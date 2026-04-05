@@ -1,7 +1,6 @@
 import os
-import base64
 import streamlit as st
-from streamlit_clickable_images import clickable_images
+from streamlit_image_select import image_select
 
 st.markdown("""
 <style>
@@ -44,7 +43,7 @@ st.markdown("""
     border-radius: 22px;
     padding: 1rem;
     box-shadow: 0 0 18px rgba(0,229,255,0.08);
-    margin-bottom: 1.6rem;
+    margin-top: 2rem;
 }
 
 .selected-title {
@@ -54,35 +53,34 @@ st.markdown("""
     color: #f8fafc;
     margin-bottom: 0.9rem;
 }
+
+.selected-caption {
+    text-align: center;
+    color: #cbd5e1;
+    font-size: 1rem;
+    margin-top: 0.75rem;
+}
 </style>
 """, unsafe_allow_html=True)
 
 st.markdown('<div class="gallery-title">🧁 Beyond Engineering</div>', unsafe_allow_html=True)
 st.markdown(
-    '<div class="gallery-subtitle">Click any photo to enlarge it.</div>',
+    '<div class="gallery-subtitle">Click any bake to enlarge it.</div>',
     unsafe_allow_html=True
 )
 st.markdown('<div class="glow-line"></div>', unsafe_allow_html=True)
 
 gallery_items = [
-    {"title": "Bake 1", "image": "images/bake1.jpg"},
-    {"title": "Bake 2", "image": "images/bake2.jpg"},
-    {"title": "Bake 3", "image": "images/bake3.jpg"},
-    {"title": "Bake 4", "image": "images/bake4.jpg"},
-    {"title": "Bake 5", "image": "images/bake5.jpg"},
-    {"title": "Bake 6", "image": "images/bake6.jpg"},
-    {"title": "Bake 7", "image": "images/bake7.jpg"},
-    {"title": "Bake 8", "image": "images/bake8.jpg"},
-    {"title": "Bake 9", "image": "images/bake9.jpg"},
+    {"title": "Bake 1", "image": "images/bake1.jpg", "caption": "Bake 1"},
+    {"title": "Bake 2", "image": "images/bake2.jpg", "caption": "Bake 2"},
+    {"title": "Bake 3", "image": "images/bake3.jpg", "caption": "Bake 3"},
+    {"title": "Bake 4", "image": "images/bake4.jpg", "caption": "Bake 4"},
+    {"title": "Bake 5", "image": "images/bake5.jpg", "caption": "Bake 5"},
+    {"title": "Bake 6", "image": "images/bake6.jpg", "caption": "Bake 6"},
+    {"title": "Bake 7", "image": "images/bake7.jpg", "caption": "Bake 7"},
+    {"title": "Bake 8", "image": "images/bake8.jpg", "caption": "Bake 8"},
+    {"title": "Bake 9", "image": "images/bake9.jpg", "caption": "Bake 9"},
 ]
-
-def encode_image(path):
-    with open(path, "rb") as f:
-        encoded = base64.b64encode(f.read()).decode()
-    ext = path.split(".")[-1].lower()
-    if ext == "jpg":
-        ext = "jpeg"
-    return f"data:image/{ext};base64,{encoded}"
 
 existing_items = [item for item in gallery_items if os.path.exists(item["image"])]
 
@@ -90,37 +88,20 @@ if not existing_items:
     st.error("No baking images were found in the images folder.")
     st.stop()
 
-if "selected_bake_index" not in st.session_state:
-    st.session_state.selected_bake_index = 0
-
-image_urls = [encode_image(item["image"]) for item in existing_items]
-
-clicked = clickable_images(
-    image_urls,
-    titles=[item["title"] for item in existing_items],
-    div_style={
-        "display": "flex",
-        "justify-content": "center",
-        "flex-wrap": "wrap",
-        "gap": "16px",
-        "margin-bottom": "10px",
-    },
-    img_style={
-        "width": "31%",
-        "min-width": "220px",
-        "border-radius": "16px",
-        "border": "2px solid rgba(0,229,255,0.18)",
-        "box-shadow": "0 0 16px rgba(0,229,255,0.08)",
-        "cursor": "pointer",
-        "object-fit": "cover",
-    },
-    key="baking_gallery",
+default_index = 0
+selected_image = image_select(
+    label="",
+    images=[item["image"] for item in existing_items],
+    captions=[item["title"] for item in existing_items],
+    use_container_width=True,
+    index=default_index,
+    return_value="index",
 )
 
-if clicked > -1:
-    st.session_state.selected_bake_index = clicked
+if selected_image is None:
+    selected_image = 0
 
-selected_item = existing_items[st.session_state.selected_bake_index]
+selected_item = existing_items[selected_image]
 
 st.markdown('<div class="selected-card">', unsafe_allow_html=True)
 st.markdown(
@@ -128,4 +109,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 st.image(selected_item["image"], use_container_width=True)
+st.markdown(
+    f'<div class="selected-caption">{selected_item["caption"]}</div>',
+    unsafe_allow_html=True
+)
 st.markdown('</div>', unsafe_allow_html=True)
