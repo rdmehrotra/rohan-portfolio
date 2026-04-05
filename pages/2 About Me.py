@@ -166,8 +166,8 @@ with col3:
         st.markdown(
             """
             <div class="card-text">
-            Since 8, I have played the piano and flute and been in group ensembles (orchestras, quintets, band) for a total of 10 years now! That
-            creative side still shows up in a lot of what I do now and what I try to implement even with my technical work. 
+            Since 8, I have played the piano and flute and been in group ensembles (orchestras, quintets, band) for a total of 10 years now!
+            That creative side still shows up in a lot of what I do now and what I try to implement even with my technical work.
             </div>
             """,
             unsafe_allow_html=True
@@ -176,15 +176,19 @@ with col3:
 with col4:
     with st.container(border=True):
         st.markdown('<div class="card-title">Baking and coffee</div>', unsafe_allow_html=True)
+
+        if os.path.exists("images/bake8.jpg"):
+            st.image("images/bake8.jpg", use_container_width=True)
+
         if os.path.exists("images/bake9.jpg"):
             st.image("images/bake9.jpg", use_container_width=True)
-        elif os.path.exists("images/baby_me.jpeg"):
-            st.image("images/baby_me.jpeg", use_container_width=True)
+
         st.markdown(
             """
             <div class="card-text">
-            I’ve been baking since I was 9 years old, so at this point it feels less like a hobby and more like
-            part of who I am. I also really enjoy coffee shop hunting, especially in a cultural powerhouse like Atlanta.
+            I’ve been baking since I was 9 years old, so at this point it feels less like a hobby and more like part of who I am.
+            I also really enjoy coffee shop hunting, especially in a cultural powerhouse like Atlanta.
+            Check my Beyond Engineering page for more.
             </div>
             """,
             unsafe_allow_html=True
