@@ -86,7 +86,7 @@ div[data-testid="stVerticalBlockBorderWrapper"] {
 
 st.markdown('<div class="about-title">About Me</div>', unsafe_allow_html=True)
 st.markdown(
-    '<div class="about-subtitle">A little more about who I am outside of just classes, code, and projects.</div>',
+    '<div class="about-subtitle">A little more about who I am outside of classes, code, and projects.</div>',
     unsafe_allow_html=True
 )
 st.markdown('<div class="glow-line"></div>', unsafe_allow_html=True)
@@ -109,11 +109,13 @@ with st.container(border=True):
             """
             <div class="body-text">
             I’m an Electrical Engineering student at Georgia Tech with interests in signal processing,
-            embedded systems, and building things that feel interactive and polished. Outside of engineering,
-            I’m also really into baking, coffee, music, and the kinds of small things that make everyday life
-            feel a little more interesting.
+            embedded systems, and building things that feel interactive, thoughtful, and well-designed.
+            I really enjoy the balance between technical problem-solving and creativity, which is probably
+            why I care just as much about how something feels as I do about whether it works.
             <br><br>
-            I wanted this page to feel more personal, because I’m definitely not just coursework and labs.
+            Outside of engineering, a lot of the things I love most are the ones that make life feel a little
+            warmer and more fun — baking, coffee, music, and the kinds of small traditions and hobbies that
+            people carry with them over time.
             </div>
             """,
             unsafe_allow_html=True
@@ -125,14 +127,14 @@ col1, col2 = st.columns(2, gap="large")
 
 with col1:
     with st.container(border=True):
-        st.markdown('<div class="card-title">Go Canes</div>', unsafe_allow_html=True)
-        show_if_exists("images/canes.jpg")
+        st.markdown('<div class="card-title">Carolina Hurricanes</div>', unsafe_allow_html=True)
+        show_if_exists("images/hurricanes.jpg")
         st.markdown(
             """
             <div class="card-text">
-            I’m a huge Carolina Hurricanes fan, and moving away from North Carolina definitely meant leaving
-            one of my favorite things behind. Hockey has always been one of those things that feels exciting
-            to me, so being a Canes fan is honestly part of my personality at this point.
+            I’m a longtime Carolina Hurricanes fan, so hockey has been one of those constants in my life for years.
+            It is something I have always genuinely enjoyed, and it still feels like a piece of home for me.
+            Even being away at school, it is one of those interests that still makes me feel connected to where I grew up.
             </div>
             """,
             unsafe_allow_html=True
@@ -145,9 +147,9 @@ with col2:
         st.markdown(
             """
             <div class="card-text">
-            I’m very much locked into the Georgia Tech world now. My sister graduated from GT, so lowkey I was
-            kind of destined to end up here. At this point, being a Yellow Jacket feels less like a choice and
-            more like a family requirement.
+            Georgia Tech has become a huge part of my life, and at this point it feels very natural to be here.
+            My sister graduated from Tech, so there was always a connection to it growing up, and now I get to
+            build my own experience here. It has been challenging, exciting, and honestly a really rewarding place to grow.
             </div>
             """,
             unsafe_allow_html=True
@@ -164,9 +166,9 @@ with col3:
         st.markdown(
             """
             <div class="card-text">
-            Music has always been a big part of my life. I played saxophone for years, and I think that creative
-            side of me still shows up in a lot of what I build now. Even when I’m working on technical things,
-            I still care a lot about presentation, feel, and making things look polished.
+            Music has always been an important part of my life. I played saxophone for years, and I think that
+            creative side still shows up in a lot of what I do now. Even with technical work, I naturally care about
+            presentation, tone, and making things feel polished rather than purely functional.
             </div>
             """,
             unsafe_allow_html=True
@@ -182,9 +184,9 @@ with col4:
         st.markdown(
             """
             <div class="card-text">
-            I’ve been baking since I was 9 years old, so at this point it’s kind of built into who I am.
-            I also really love coffee and lattes, which honestly makes sense because both baking and coffee
-            feel a little like daily rituals to me.
+            I’ve been baking since I was 9 years old, so at this point it feels less like a hobby and more like
+            part of who I am. I also really love coffee and lattes, which fits pretty naturally with that.
+            There is something about baking and coffee that feels comforting, creative, and familiar all at once.
             </div>
             """,
             unsafe_allow_html=True
