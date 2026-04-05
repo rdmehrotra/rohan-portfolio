@@ -64,6 +64,5 @@ st.markdown("""
 <div class="hero">
     <div class="name">Rohan Mehrotra</div>
     <div class="subtitle">Electrical Engineering @ Georgia Tech</div>
-    <div class="tagline">Signal Processing | Embedded Systems | Intelligent Systems</div>
 </div>
 """, unsafe_allow_html=True)
