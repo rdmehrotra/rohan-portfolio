@@ -24,25 +24,24 @@ st.markdown("""
     text-align: center;
     font-size: 1.08rem;
     color: #cbd5e1;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2.2rem;
 }
 
 .glow-line {
     width: 180px;
     height: 3px;
-    margin: 0 auto 2.5rem auto;
+    margin: 0 auto 2.6rem auto;
     background: #00E5FF;
     box-shadow: 0 0 14px rgba(0,229,255,0.8);
     border-radius: 999px;
 }
 
-.project-card {
+div[data-testid="stVerticalBlockBorderWrapper"] {
     background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
-    border: 1px solid rgba(0,229,255,0.18);
-    border-radius: 22px;
-    padding: 1.6rem;
-    box-shadow: 0 0 24px rgba(0,229,255,0.08);
-    margin-bottom: 1.7rem;
+    border: 1px solid rgba(0,229,255,0.18) !important;
+    border-radius: 22px !important;
+    padding: 1.15rem !important;
+    box-shadow: 0 0 22px rgba(0,229,255,0.08);
 }
 
 .project-title {
@@ -77,25 +76,14 @@ st.markdown("""
     border: 1px solid rgba(0,229,255,0.18);
 }
 
-.image-shell {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(0,229,255,0.16);
-    border-radius: 18px;
-    padding: 0.7rem;
-    box-shadow: 0 0 18px rgba(0,229,255,0.08);
+.image-note {
+    color: #94a3b8;
+    font-size: 0.92rem;
+    margin-top: 0.45rem;
 }
 
-.image-placeholder {
-    height: 300px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 1rem;
-    color: #94a3b8;
-    background: rgba(255,255,255,0.04);
-    border: 1px dashed rgba(0,229,255,0.25);
+.project-gap {
+    height: 1.2rem;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -114,31 +102,26 @@ def render_tags(tags):
 
 
 def render_project(title, subtitle, description, tags, github_url, image_path, image_caption):
-    st.markdown('<div class="project-card">', unsafe_allow_html=True)
+    with st.container(border=True):
+        left, right = st.columns([1.45, 1], gap="large", vertical_alignment="center")
 
-    left, right = st.columns([1.45, 1], vertical_alignment="center")
+        with left:
+            st.markdown(f'<div class="project-title">{title}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="project-subtitle">{subtitle}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="project-text">{description}</div>', unsafe_allow_html=True)
+            render_tags(tags)
+            st.markdown(" ")
+            st.link_button("View Code →", github_url)
 
-    with left:
-        st.markdown(f'<div class="project-title">{title}</div>', unsafe_allow_html=True)
-        st.markdown(f'<div class="project-subtitle">{subtitle}</div>', unsafe_allow_html=True)
-        st.markdown(f'<div class="project-text">{description}</div>', unsafe_allow_html=True)
-        render_tags(tags)
-        st.link_button("View Code →", github_url)
+        with right:
+            if os.path.exists(image_path):
+                st.image(image_path, use_container_width=True)
+                if image_caption:
+                    st.markdown(f'<div class="image-note">{image_caption}</div>', unsafe_allow_html=True)
+            else:
+                st.info(f"Add image here later: {image_path}")
 
-    with right:
-        st.markdown('<div class="image-shell">', unsafe_allow_html=True)
-        if os.path.exists(image_path):
-            st.image(image_path, use_container_width=True)
-            if image_caption:
-                st.caption(image_caption)
-        else:
-            st.markdown(
-                f'<div class="image-placeholder">Drop your image here later:<br><strong>{image_path}</strong></div>',
-                unsafe_allow_html=True
-            )
-        st.markdown('</div>', unsafe_allow_html=True)
-
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('<div class="project-gap"></div>', unsafe_allow_html=True)
 
 
 render_project(
