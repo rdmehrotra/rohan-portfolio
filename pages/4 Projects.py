@@ -158,14 +158,15 @@ render_project(
 )
 
 render_project(
-    title="Embedded Systems Interface",
-    subtitle="Interactive ESP32-based system with display, buttons, and real-time behavior",
+    title="8-Bit Embedded Role-Playing Game on Mbed",
+    subtitle="C-based strategy game with integrated hardware interaction",
     description="""
-    In this project, I worked with an ESP32-C6 microcontroller to build an interactive embedded system using hardware inputs and outputs in real time.
-    The system involved integrating push or navigation switch input, LCD display behavior, timers, GPIO logic, and speaker functionality while debugging both code and physical wiring.
-    Beyond just getting the system to run, this project taught me how closely software and hardware depend on each other, especially when timing, peripherals, and user interaction all need to work together smoothly.
+    In February 2026, I developed an 8-bit role-playing strategy game in C to run on an Mbed microcontroller.
+    I focused on efficient data structures, including hash tables, to support the game’s structure and enable efficient
+    data storage and retrieval. I also integrated hardware components including an LCD display, buttons,
+    an accelerometer, and a speaker to support gameplay interaction and real-time feedback.
     """,
-    tags=["Embedded C", "ESP32", "Microcontrollers", "GPIO", "Real-Time Systems"],
+    tags=["C", "Mbed", "Embedded Systems", "Data Structures", "Hardware Integration"],
     github_url=None,
     image_path="images/project2.jpg",
     image_caption="Hardware prototype, update coming soon"
