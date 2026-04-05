@@ -12,12 +12,11 @@ def set_bg(image_file):
     .stApp {{
         background-image: url("data:image/jpeg;base64,{data}");
         background-size: cover;
-        background-position: center;
+        background-position: 72% center;
         background-repeat: no-repeat;
         background-attachment: fixed;
     }}
 
-    /* hide streamlit top stuff */
     header[data-testid="stHeader"] {{
         display: none;
     }}
@@ -34,7 +33,6 @@ def set_bg(image_file):
         display: none;
     }}
 
-    /* remove default top spacing */
     .block-container {{
         padding-top: 0rem !important;
         padding-bottom: 2rem;
@@ -43,7 +41,6 @@ def set_bg(image_file):
         max-width: none;
     }}
 
-    /* keep everything transparent so the image shows */
     [data-testid="stAppViewContainer"] {{
         background: transparent;
     }}
@@ -53,61 +50,94 @@ def set_bg(image_file):
     }}
 
     section[data-testid="stSidebar"] {{
-        background: rgba(7, 12, 20, 0.82);
-        backdrop-filter: blur(6px);
+        background: rgba(8, 12, 18, 0.68);
+        backdrop-filter: blur(8px);
     }}
 
-    /* dark overlay over the photo */
     .stApp::before {{
         content: "";
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.38);
+        background: rgba(255, 255, 255, 0.08);
         z-index: -1;
     }}
 
     .hero {{
+        min-height: 88vh;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 8%;
+    }}
+
+    .hero-panel {{
+        width: min(720px, 48vw);
         text-align: center;
-        padding-top: 120px;
-        padding-bottom: 80px;
     }}
 
     .name {{
-        font-size: 72px;
+        font-size: 78px;
         font-weight: 800;
-        color: #00E5FF;
-        text-shadow: 0 0 22px rgba(0,229,255,0.60);
+        color: #050505;
+        line-height: 1.04;
+        text-shadow:
+            0 0 6px rgba(255,255,255,0.18),
+            0 0 14px rgba(255,255,255,0.12),
+            0 0 22px rgba(0,229,255,0.22);
     }}
 
     .subtitle {{
-        font-size: 28px;
-        color: #E5E7EB;
-        margin-top: 14px;
-    }}
-
-    .tagline {{
-        font-size: 20px;
-        color: #CBD5E1;
-        margin-top: 20px;
+        font-size: 30px;
+        color: rgba(20,20,20,0.82);
+        margin-top: 18px;
+        text-shadow:
+            0 0 6px rgba(255,255,255,0.16),
+            0 0 12px rgba(0,229,255,0.14);
     }}
 
     .glow-line {{
-        width: 230px;
+        width: 260px;
         height: 4px;
-        margin: 30px auto 0 auto;
+        margin: 28px auto 0 auto;
         background: #00E5FF;
         box-shadow: 0 0 16px rgba(0,229,255,0.8);
         border-radius: 999px;
     }}
+
+    @media (max-width: 900px) {{
+        .hero {{
+            justify-content: center;
+            padding-right: 0;
+            min-height: 82vh;
+        }}
+
+        .hero-panel {{
+            width: 90%;
+        }}
+
+        .name {{
+            font-size: 56px;
+        }}
+
+        .subtitle {{
+            font-size: 24px;
+        }}
+
+        .stApp {{
+            background-position: 64% center;
+        }}
+    }}
     </style>
     """, unsafe_allow_html=True)
 
-set_bg("images/background4.jpg")
+set_bg("images/background3.jpg")
 
 st.markdown("""
 <div class="hero">
-    <div class="name">Rohan Mehrotra</div>
-    <div class="subtitle">Electrical Engineering @ Georgia Tech</div>
-    <div class="glow-line"></div>
+    <div class="hero-panel">
+        <div class="name">Rohan Mehrotra</div>
+        <div class="subtitle">Electrical Engineering @ Georgia Tech</div>
+        <div class="glow-line"></div>
+    </div>
 </div>
 """, unsafe_allow_html=True)
