@@ -1,6 +1,8 @@
 import streamlit as st
 import base64
 
+import streamlit as st
+st.set_page_config(page_title="Rohan Mehrotra", layout="wide")
 # ---------- BACKGROUND IMAGE ----------
 def set_bg(image_file):
     with open(image_file, "rb") as f:
