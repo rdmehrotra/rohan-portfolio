@@ -1,4 +1,6 @@
 import streamlit as st
+import base64
+import streamlit.components.v1 as components
 
 st.title("📄 Resume")
 
@@ -6,7 +8,7 @@ st.title("📄 Resume")
 with open("assets/rohan_mehrotra_resume.pdf", "rb") as f:
     pdf_bytes = f.read()
 
-# ---------- BUTTONS ----------
+# ---------- DOWNLOAD BUTTON ----------
 col1, col2 = st.columns(2)
 
 with col1:
@@ -18,9 +20,25 @@ with col1:
     )
 
 with col2:
-    st.link_button("🔍 View Resume", "/assets/rohan_mehrotra_resume.pdf")
+    st.link_button("🔍 Open in New Tab", "/assets/rohan_mehrotra_resume.pdf")
 
 st.markdown("##")
+
+# ---------- DISPLAY PDF (THIS WORKS) ----------
+base64_pdf = base64.b64encode(pdf_bytes).decode("utf-8")
+
+pdf_html = f"""
+<div style="display:flex; justify-content:center;">
+    <iframe 
+        src="data:application/pdf;base64,{base64_pdf}" 
+        width="800px" 
+        height="1000px" 
+        style="border:none; border-radius:10px;">
+    </iframe>
+</div>
+"""
+
+components.html(pdf_html, height=1000)
 
 # ---------- LINKEDIN ----------
 st.markdown("""
@@ -35,6 +53,7 @@ st.markdown("""
         color:white;
         font-weight:600;
         box-shadow: 0 0 10px rgba(10,102,194,0.5);
+        margin-top:20px;
     ">
         <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20">
         Connect on LinkedIn
