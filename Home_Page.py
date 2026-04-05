@@ -12,7 +12,7 @@ def set_bg(image_file):
     .stApp {{
         background-image: url("data:image/jpeg;base64,{data}");
         background-size: cover;
-        background-position: 72% center;
+        background-position: 78% center;
         background-repeat: no-repeat;
         background-attachment: fixed;
     }}
@@ -67,12 +67,12 @@ def set_bg(image_file):
         display: flex;
         align-items: flex-start;
         justify-content: flex-end;
-        padding-top: 110px;
-        padding-right: 7%;
+        padding-top: 70px;
+        padding-right: 4%;
     }}
 
     .hero-panel {{
-        width: min(720px, 48vw);
+        width: min(700px, 44vw);
         text-align: center;
     }}
 
@@ -127,7 +127,7 @@ def set_bg(image_file):
         }}
 
         .stApp {{
-            background-position: 64% center;
+            background-position: 68% center;
         }}
     }}
     </style>
