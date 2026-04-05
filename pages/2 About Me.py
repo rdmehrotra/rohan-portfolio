@@ -166,7 +166,7 @@ with col3:
         st.markdown(
             """
             <div class="card-text">
-            Since 8, I have played the piano and flute and been in group ensembles for a total of 10 years. That
+            Since 8, I have played the piano and flute and been in group ensembles (orchestras, quintets, band) for a total of 10 years now! That
             creative side still shows up in a lot of what I do now and what I try to implement even with my technical work. 
             </div>
             """,
