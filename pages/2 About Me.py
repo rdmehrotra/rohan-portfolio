@@ -70,8 +70,6 @@ div[data-testid="stImage"] img {
 """, unsafe_allow_html=True)
 
 st.markdown('<div class="about-title">About Me</div>', unsafe_allow_html=True)
-st.markdown(
-    '<div class="about-subtitle">A little more about who I am outside of classes, code, and projects.</div>',
     unsafe_allow_html=True
 )
 st.markdown('<div class="glow-line"></div>', unsafe_allow_html=True)
