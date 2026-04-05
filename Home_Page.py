@@ -76,7 +76,7 @@ col1, col2 = st.columns(2)
 
 # Resume button
 with col1:
-    with open("assets/resume.pdf", "rb") as file:
+    with open("assets/rohan_mehrotra_resume.pdfdf", "rb") as file:
         st.download_button(
             label="📄 Resume",
             data=file,
@@ -87,7 +87,7 @@ with col1:
 # LinkedIn button
 with col2:
     st.markdown("""
-    <a href="https://www.linkedin.com/in/YOUR-LINKEDIN/" target="_blank" style="text-decoration:none;">
+    <a href="https://www.linkedin.com/in/rohan-d-mehrotra/" target="_blank" style="text-decoration:none;">
         <div style="
             display:inline-flex;
             align-items:center;
