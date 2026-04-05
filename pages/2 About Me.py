@@ -176,7 +176,7 @@ with col3:
 with col4:
     with st.container(border=True):
         st.markdown('<div class="card-title">Baking and coffee</div>', unsafe_allow_html=True)
-        if os.path.exists("images/bake8.jpg"):
+        if os.path.exists("images/bake9.jpg"):
             st.image("images/bake8.jpg", use_container_width=True)
         elif os.path.exists("images/baby_me.jpeg"):
             st.image("images/baby_me.jpeg", use_container_width=True)
@@ -184,8 +184,7 @@ with col4:
             """
             <div class="card-text">
             I’ve been baking since I was 9 years old, so at this point it feels less like a hobby and more like
-            part of who I am. I also really love coffee and lattes, which fits pretty naturally with that.
-            There is something about baking and coffee that feels comforting, creative, and familiar all at once.
+            part of who I am. I also really enjoy coffee shop hunting, especially in a cultural powerhouse like Atlanta.
             </div>
             """,
             unsafe_allow_html=True
