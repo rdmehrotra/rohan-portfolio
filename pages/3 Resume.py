@@ -46,7 +46,7 @@ st.markdown('<div class="resume-title">📄 Resume</div>', unsafe_allow_html=Tru
 with open("assets/rohan_mehrotra_resume.pdf", "rb") as f:
     pdf_bytes = f.read()
 
-top1, top2, top3 = st.columns([1.2, 1.2, 1])
+top1, top2 = st.columns([1.2, 1])
 
 with top1:
     st.download_button(
@@ -58,15 +58,8 @@ with top1:
     )
 
 with top2:
-    st.link_button(
-        "🔍 Open Resume",
-        "https://github.com/rdmehrotra/rohan-portfolio/blob/main/assets/rohan_mehrotra_resume.pdf?raw=1",
-        use_container_width=True
-    )
-
-with top3:
     st.markdown("""
-    <a class="linkedin-btn" href="https://www.linkedin.com/in/rohan-d-mehrotra/" target="_blank">
+    <a class="linkedin-btn" href="https://www.linkedin.com/in/YOUR-LINKEDIN/" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20">
         Connect on LinkedIn
     </a>
