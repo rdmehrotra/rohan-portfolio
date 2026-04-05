@@ -124,7 +124,7 @@ def set_bg(image_file):
         }}
 
         .stApp {{
-            background-position: 64% center;
+            background-position: 54% center;
         }}
     }}
     </style>
