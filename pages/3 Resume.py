@@ -3,9 +3,11 @@ import streamlit as st
 st.markdown("""
 <style>
 .block-container {
-    max-width: 1600px;
-    padding-top: 2rem;
+    max-width: none;
+    padding-top: 1.5rem;
     padding-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .resume-title {
@@ -32,7 +34,7 @@ st.markdown("""
 .resume-wrap {
     margin-top: 1.5rem;
     border-radius: 18px;
-    padding: 1.25rem;
+    padding: 0.75rem;
     background: rgba(255,255,255,0.06);
     box-shadow: 0 0 18px rgba(0,229,255,0.08);
 }
@@ -71,5 +73,5 @@ with top3:
     """, unsafe_allow_html=True)
 
 st.markdown('<div class="resume-wrap">', unsafe_allow_html=True)
-st.pdf(pdf_bytes, height=1600)
+st.pdf(pdf_bytes, height=2200)
 st.markdown('</div>', unsafe_allow_html=True)
