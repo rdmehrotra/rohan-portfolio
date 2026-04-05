@@ -66,4 +66,11 @@ st.markdown("""
     <div class="subtitle">Electrical Engineering @ Georgia Tech</div>
     <div class="tagline">Signal Processing • Embedded Systems • AI Applications</div>
 </div>
+with open("assets/resume.pdf", "rb") as file:
+    st.download_button(
+        label="📄 Download Resume",
+        data=file,
+        file_name="Rohan_Mehrotra_Resume.pdf",
+        mime="application/pdf"
+    )
 """, unsafe_allow_html=True)
