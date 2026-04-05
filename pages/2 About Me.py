@@ -119,8 +119,7 @@ with col1:
             """
             <div class="card-text">
             I’m a longtime Carolina Hurricanes fan, so hockey has been one of those constants in my life for years.
-            It is something I have always genuinely enjoyed, and it still feels like a piece of home for me.
-            Even being away at school, it is one of those interests that still makes me feel connected to where I grew up.
+            Even being 400 miles away at school, it is one of those interests that still makes me feel connected to where I grew up when I watch it.
             </div>
             """,
             unsafe_allow_html=True
@@ -135,9 +134,9 @@ with col2:
         st.markdown(
             """
             <div class="card-text">
-            Georgia Tech has become a huge part of my life, and at this point it feels very natural to be here.
-            My sister graduated from Tech, so there was always a connection to it growing up, and now I get to
-            build my own experience here. It has been challenging, exciting, and extremely humbling.
+            Georgia Tech has become a huge part of my life. My sister graduated from Tech, 
+            so there was always a connection to it growing up, and now I get to build my 
+            own experience here. It has been fun, exciting, and extremely humbling.
             </div>
             """,
             unsafe_allow_html=True
@@ -182,7 +181,7 @@ with col4:
             <div class="card-text">
             I’ve been baking since I was 9 years old, so at this point it feels less like a hobby and more like part of who I am.
             I also really enjoy coffee shop hunting, especially in a cultural powerhouse like Atlanta.
-            Check my Beyond Engineering page for more.
+            Check my Beyond Engineering page for more!
             </div>
             """,
             unsafe_allow_html=True
