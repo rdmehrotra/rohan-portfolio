@@ -1,7 +1,5 @@
 import streamlit as st
 
-st.set_page_config(page_title="Resume", layout="wide")
-
 st.markdown("""
 <style>
 .block-container {
@@ -73,5 +71,5 @@ with top3:
     """, unsafe_allow_html=True)
 
 st.markdown('<div class="resume-wrap">', unsafe_allow_html=True)
-st.pdf(pdf_bytes, width="stretch", height=1600)
+st.pdf(pdf_bytes, height=1600)
 st.markdown('</div>', unsafe_allow_html=True)
