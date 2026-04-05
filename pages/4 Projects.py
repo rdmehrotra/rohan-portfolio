@@ -100,7 +100,7 @@ div[data-testid="stVerticalBlockBorderWrapper"] {
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="projects-title">🚀 Projects</div>', unsafe_allow_html=True)
+st.markdown('<div class="projects-title">Projects</div>', unsafe_allow_html=True)
 st.markdown(
     '<div class="projects-subtitle">A closer look at some of the engineering and technical work I’ve built.</div>',
     unsafe_allow_html=True
