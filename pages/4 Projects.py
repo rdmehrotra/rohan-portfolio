@@ -85,6 +85,18 @@ div[data-testid="stVerticalBlockBorderWrapper"] {
 .project-gap {
     height: 1.2rem;
 }
+
+.coming-soon-btn {
+    display: inline-block;
+    padding: 0.78rem 1.15rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0,229,255,0.18);
+    background: rgba(255,255,255,0.03);
+    color: #cbd5e1;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 0 14px rgba(0,229,255,0.06);
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -111,7 +123,14 @@ def render_project(title, subtitle, description, tags, github_url, image_path, i
             st.markdown(f'<div class="project-text">{description}</div>', unsafe_allow_html=True)
             render_tags(tags)
             st.markdown(" ")
-            st.link_button("View Code →", github_url)
+
+            if github_url:
+                st.link_button("View Code →", github_url)
+            else:
+                st.markdown(
+                    '<div class="coming-soon-btn">Code coming soon :)</div>',
+                    unsafe_allow_html=True
+                )
 
         with right:
             if os.path.exists(image_path):
@@ -147,7 +166,7 @@ render_project(
     Beyond just getting the system to run, this project taught me how closely software and hardware depend on each other, especially when timing, peripherals, and user interaction all need to work together smoothly.
     """,
     tags=["Embedded C", "ESP32", "Microcontrollers", "GPIO", "Real-Time Systems"],
-    github_url="https://github.com/rdmehrotra/embedded-systems-interface",
+    github_url=None,
     image_path="images/project2.jpg",
     image_caption="Hardware prototype, update coming soon"
 )
