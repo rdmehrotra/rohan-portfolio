@@ -93,7 +93,7 @@ def set_bg(image_file):
     </style>
     """, unsafe_allow_html=True)
 
-set_bg("images/background1.jpg")
+set_bg("images/background2.jpg")
 
 st.markdown("""
 <div class="hero">
