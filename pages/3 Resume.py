@@ -1,44 +1,35 @@
 import streamlit as st
-import base64
-import streamlit.components.v1 as components
 
 st.title("📄 Resume")
 
-# ---------- LOAD PDF ----------
-with open("assets/rohan_mehrotra_resume.pdf", "rb") as f:
-    pdf_bytes = f.read()
-
-# ---------- DOWNLOAD BUTTON ----------
+# ---------- BUTTONS ----------
 col1, col2 = st.columns(2)
 
 with col1:
-    st.download_button(
-        label="📄 Download Resume",
-        data=pdf_bytes,
-        file_name="Rohan_Mehrotra_Resume.pdf",
-        mime="application/pdf"
-    )
+    with open("assets/rohan_mehrotra_resume.pdf", "rb") as f:
+        st.download_button(
+            label="📄 Download Resume",
+            data=f,
+            file_name="Rohan_Mehrotra_Resume.pdf",
+            mime="application/pdf"
+        )
 
 with col2:
-    st.link_button("🔍 Open in New Tab", "/assets/rohan_mehrotra_resume.pdf")
+    st.link_button("🔍 Open Resume", "/assets/rohan_mehrotra_resume.pdf")
 
 st.markdown("##")
 
-# ---------- DISPLAY PDF (THIS WORKS) ----------
-base64_pdf = base64.b64encode(pdf_bytes).decode("utf-8")
+# ---------- GOOGLE PDF VIEWER ----------
+pdf_url = "https://rohan-portfolio-jq7n6jxs7z84vbr67h2hc.streamlit.app/assets/rohan_mehrotra_resume.pdf"
 
-pdf_html = f"""
-<div style="display:flex; justify-content:center;">
-    <iframe 
-        src="data:application/pdf;base64,{base64_pdf}" 
-        width="800px" 
-        height="1000px" 
-        style="border:none; border-radius:10px;">
-    </iframe>
-</div>
-"""
-
-components.html(pdf_html, height=1000)
+st.markdown(f"""
+<iframe 
+    src="https://docs.google.com/gview?url={pdf_url}&embedded=true"
+    width="100%" 
+    height="1000px"
+    style="border:none;">
+</iframe>
+""", unsafe_allow_html=True)
 
 # ---------- LINKEDIN ----------
 st.markdown("""
