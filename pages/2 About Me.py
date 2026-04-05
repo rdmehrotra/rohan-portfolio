@@ -66,18 +66,6 @@ div[data-testid="stImage"] img {
     font-size: 1.08rem;
     line-height: 1.85;
 }
-
-.fun-pill {
-    display: inline-block;
-    padding: 0.52rem 0.92rem;
-    margin-right: 0.5rem;
-    margin-bottom: 0.6rem;
-    border-radius: 999px;
-    background: rgba(0,229,255,0.11);
-    color: #a5f3fc;
-    font-size: 0.98rem;
-    border: 1px solid rgba(0,229,255,0.18);
-}
 </style>
 """, unsafe_allow_html=True)
 
@@ -214,22 +202,3 @@ with col4:
             """,
             unsafe_allow_html=True
         )
-
-st.markdown("")
-
-# QUICK FACTS
-with st.container(border=True):
-    st.markdown('<div class="card-title">Quick Facts</div>', unsafe_allow_html=True)
-    st.markdown(
-        """
-        <span class="fun-pill">Raleigh roots</span>
-        <span class="fun-pill">Georgia Tech EE</span>
-        <span class="fun-pill">Signal Processing</span>
-        <span class="fun-pill">Embedded Systems</span>
-        <span class="fun-pill">Baking since age 9</span>
-        <span class="fun-pill">Carolina Hurricanes fan</span>
-        <span class="fun-pill">Coffee and latte lover</span>
-        <span class="fun-pill">Music person</span>
-        """,
-        unsafe_allow_html=True
-    )
