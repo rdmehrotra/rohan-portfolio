@@ -5,26 +5,28 @@ st.title("📄 Resume")
 with open("assets/rohan_mehrotra_resume.pdf", "rb") as f:
     pdf_bytes = f.read()
 
-# Buttons
 col1, col2 = st.columns(2)
 
 with col1:
     st.download_button(
-        "📄 Download Resume",
+        label="📄 Download Resume",
         data=pdf_bytes,
         file_name="Rohan_Mehrotra_Resume.pdf",
         mime="application/pdf"
     )
 
 with col2:
-    st.link_button("🔍 Open Resume", "/assets/rohan_mehrotra_resume.pdf")
+    st.link_button(
+        "🔍 Open Resume",
+        "https://github.com/rdmehrotra/rohan-portfolio/blob/main/assets/rohan_mehrotra_resume.pdf?raw=1"
+    )
 
 st.markdown("##")
 
-# ✅ THIS IS THE CLEAN WORKING VIEWER
-st.pdf(pdf_bytes)
+st.pdf(pdf_bytes, height=900)
 
-# LinkedIn
+st.markdown("##")
+
 st.markdown("""
 <a href="https://www.linkedin.com/in/rohan-d-mehrotra/" target="_blank" style="text-decoration:none;">
     <div style="
@@ -37,7 +39,7 @@ st.markdown("""
         color:white;
         font-weight:600;
         box-shadow: 0 0 10px rgba(10,102,194,0.5);
-        margin-top:20px;
+        margin-top:10px;
     ">
         <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20">
         Connect on LinkedIn
