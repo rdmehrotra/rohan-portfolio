@@ -45,9 +45,9 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="gallery-title">🧁 Beyond Engineering</div>', unsafe_allow_html=True)
+st.markdown('<div class="gallery-title">Beyond Engineering</div>', unsafe_allow_html=True)
 st.markdown(
-    '<div class="gallery-subtitle">A little gallery of some of my baking.</div>',
+    '<div class="gallery-subtitle">A snippet of my baking.</div>',
     unsafe_allow_html=True
 )
 st.markdown('<div class="glow-line"></div>', unsafe_allow_html=True)
@@ -60,7 +60,7 @@ gallery_items = [
     {"image": "images/bake5.jpg", "caption": ""},
     {"image": "images/bake6.jpg", "caption": ""},
     {"image": "images/bake7.jpg", "caption": ""},
-    {"image": "images/bake8.jpg", "caption": "I’m a huge latte and coffee person, so this one had to make the gallery."},
+    {"image": "images/bake8.jpg", "caption": "I’m a huge latte and coffee person, so this one is making the gallery :)"},
     {"image": "images/bake9.jpg", "caption": "I’ve been baking since I was 9 years old!"},
 ]
 
