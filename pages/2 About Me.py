@@ -18,14 +18,7 @@ st.markdown("""
     font-weight: 800;
     color: #00E5FF;
     text-shadow: 0 0 24px rgba(0,229,255,0.45);
-    margin-bottom: 0.2rem;
-}
-
-.about-subtitle {
-    text-align: center;
-    font-size: 1.22rem;
-    color: #cbd5e1;
-    margin-bottom: 1.8rem;
+    margin-bottom: 0.8rem;
 }
 
 .glow-line {
@@ -70,8 +63,6 @@ div[data-testid="stImage"] img {
 """, unsafe_allow_html=True)
 
 st.markdown('<div class="about-title">About Me</div>', unsafe_allow_html=True)
-    unsafe_allow_html=True
-)
 st.markdown('<div class="glow-line"></div>', unsafe_allow_html=True)
 
 
@@ -108,6 +99,9 @@ with right:
             I really enjoy the balance between technical problem-solving and creativity, which is probably
             why I care just as much about how something feels as I do about whether it works.
             <br><br>
+            Outside of engineering, a lot of the things I love most are the ones that make life feel a little
+            warmer and more fun — baking, coffee, music, and the kinds of small traditions and hobbies that
+            people carry with them over time.
             </div>
             """,
             unsafe_allow_html=True
@@ -160,9 +154,8 @@ col3, col4 = st.columns(2, gap="large")
 with col3:
     with st.container(border=True):
         st.markdown('<div class="card-title">Music</div>', unsafe_allow_html=True)
-        music_img = cropped_image("images/music.jpg", (1000, 1350), centering=(0.5, 0.18))
-        if music_img is not None:
-            st.image(music_img, use_container_width=True)
+        if os.path.exists("images/music.jpg"):
+            st.image("images/music.jpg", use_container_width=True)
         st.markdown(
             """
             <div class="card-text">
