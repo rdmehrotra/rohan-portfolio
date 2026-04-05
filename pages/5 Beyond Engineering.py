@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import streamlit as st
 
 st.markdown("""
@@ -82,14 +83,26 @@ div[data-testid="stVerticalBlockBorderWrapper"] {
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="gallery-title">🧁 Baking Gallery</div>', unsafe_allow_html=True)
+st.markdown('<div class="gallery-title">🧁 Beyond Engineering</div>', unsafe_allow_html=True)
 st.markdown(
     '<div class="gallery-subtitle">Click a bake below to enlarge it.</div>',
     unsafe_allow_html=True
 )
 st.markdown('<div class="glow-line"></div>', unsafe_allow_html=True)
 
-# Change these captions / ratings however you want
+def resolve_image(filename):
+    exact = Path("images") / filename
+    if exact.exists():
+        return str(exact)
+
+    stem = Path(filename).stem
+    for ext in [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"]:
+        candidate = Path("images") / f"{stem}{ext}"
+        if candidate.exists():
+            return str(candidate)
+
+    return None
+
 gallery_items = [
     {"title": "Bake 1", "image": "bake 1.jpg", "caption": "Bake 1", "rating": "⭐"},
     {"title": "Bake 2", "image": "bake 2.jpg", "caption": "Bake 2", "rating": "⭐"},
@@ -106,13 +119,16 @@ if "selected_bake_index" not in st.session_state:
     st.session_state.selected_bake_index = 0
 
 selected_item = gallery_items[st.session_state.selected_bake_index]
+selected_path = resolve_image(selected_item["image"])
 
-# Enlarged selected bake
 with st.container(border=True):
     left, right = st.columns([1.25, 1], gap="large", vertical_alignment="center")
 
     with left:
-        st.image(os.path.join("images", selected_item["image"]), use_container_width=True)
+        if selected_path:
+            st.image(selected_path, use_container_width=True)
+        else:
+            st.error(f"Could not find image: {selected_item['image']}")
 
     with right:
         st.markdown(
@@ -130,7 +146,6 @@ with st.container(border=True):
 
 st.markdown('<div class="gallery-gap"></div>', unsafe_allow_html=True)
 
-# 3x3 clickable-style grid
 for row_start in range(0, len(gallery_items), 3):
     cols = st.columns(3, gap="large")
     row_items = gallery_items[row_start:row_start+3]
@@ -138,11 +153,17 @@ for row_start in range(0, len(gallery_items), 3):
     for col, item in zip(cols, row_items):
         with col:
             with st.container(border=True):
-                st.image(os.path.join("images", item["image"]), use_container_width=True)
+                thumb_path = resolve_image(item["image"])
+                if thumb_path:
+                    st.image(thumb_path, use_container_width=True)
+                else:
+                    st.warning(f"Missing: {item['image']}")
+
                 st.markdown(
                     f'<div class="thumb-note">{item["title"]}</div>',
                     unsafe_allow_html=True
                 )
+
                 if st.button(f"Open {item['title']}", key=item["title"], use_container_width=True):
                     st.session_state.selected_bake_index = gallery_items.index(item)
                     st.rerun()
