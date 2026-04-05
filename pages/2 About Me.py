@@ -137,7 +137,7 @@ with col2:
             <div class="card-text">
             Georgia Tech has become a huge part of my life, and at this point it feels very natural to be here.
             My sister graduated from Tech, so there was always a connection to it growing up, and now I get to
-            build my own experience here. It has been challenging, exciting, and honestly a really rewarding place to grow.
+            build my own experience here. It has been challenging, exciting, and extremely humbling.
             </div>
             """,
             unsafe_allow_html=True
