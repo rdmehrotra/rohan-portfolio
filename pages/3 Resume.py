@@ -1,27 +1,38 @@
 import streamlit as st
+import base64
 
 st.title("📄 Resume")
 
-# ---------- SHOW PDF (WORKS WITH STREAMLIT CLOUD) ----------
-with open("assets/rohan_mehrotra_resume.pdf", "rb") as pdf_file:
-    PDFbyte = pdf_file.read()
+# ---------- LOAD PDF ----------
+with open("assets/rohan_mehrotra_resume.pdf", "rb") as f:
+    pdf_bytes = f.read()
 
+# ---------- DOWNLOAD BUTTON ----------
 st.download_button(
     label="📄 Download Resume",
-    data=PDFbyte,
+    data=pdf_bytes,
     file_name="Rohan_Mehrotra_Resume.pdf",
-    mime='application/octet-stream'
+    mime="application/pdf"
 )
 
 st.markdown("##")
 
-# THIS DISPLAYS THE PDF PROPERLY
-st.write("### Preview")
-st.pdf(PDFbyte)  # ← THIS IS THE FIX
+# ---------- SAFE EMBED (WORKS ON STREAMLIT CLOUD) ----------
+base64_pdf = base64.b64encode(pdf_bytes).decode('utf-8')
+
+pdf_display = f"""
+<embed 
+    src="data:application/pdf;base64,{base64_pdf}" 
+    width="100%" 
+    height="800px" 
+    type="application/pdf">
+"""
+
+st.markdown(pdf_display, unsafe_allow_html=True)
 
 # ---------- LINKEDIN BUTTON ----------
 st.markdown("""
-<a href="https://www.linkedin.com/in/YOUR-LINKEDIN/" target="_blank" style="text-decoration:none;">
+<a href="https://www.linkedin.com/in/rohan-d-mehrotra/" target="_blank" style="text-decoration:none;">
     <div style="
         display:inline-flex;
         align-items:center;
