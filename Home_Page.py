@@ -76,7 +76,7 @@ col1, col2 = st.columns(2)
 
 # Resume button
 with col1:
-    with open("assets/rohan_mehrotra_resume.pdfdf", "rb") as file:
+    with open("assets/rohan_mehrotra_resume.pdf", "rb") as file:
         st.download_button(
             label="📄 Resume",
             data=file,
