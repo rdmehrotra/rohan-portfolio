@@ -161,14 +161,13 @@ col3, col4 = st.columns(2, gap="large")
 
 with col3:
     with st.container(border=True):
-        st.markdown('<div class="card-title">Music and creativity</div>', unsafe_allow_html=True)
+        st.markdown('<div class="card-title">Music</div>', unsafe_allow_html=True)
         show_if_exists("images/music.jpg")
         st.markdown(
             """
             <div class="card-text">
-            Music has always been an important part of my life. I played saxophone for years, and I think that
-            creative side still shows up in a lot of what I do now. Even with technical work, I naturally care about
-            presentation, tone, and making things feel polished rather than purely functional.
+            Since 8, I have played the piano and flute and been in group ensembles for a total of 10 years. That
+            creative side still shows up in a lot of what I do now and what I try to implement even with my technical work. 
             </div>
             """,
             unsafe_allow_html=True
