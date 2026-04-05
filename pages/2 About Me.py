@@ -84,7 +84,7 @@ div[data-testid="stVerticalBlockBorderWrapper"] {
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="about-title">💫 About Me</div>', unsafe_allow_html=True)
+st.markdown('<div class="about-title">About Me</div>', unsafe_allow_html=True)
 st.markdown(
     '<div class="about-subtitle">A little more about who I am outside of just classes, code, and projects.</div>',
     unsafe_allow_html=True
@@ -97,24 +97,23 @@ def show_if_exists(path):
         st.image(path, use_container_width=True)
 
 
-# Hero section
 with st.container(border=True):
     left, right = st.columns([1, 1.45], gap="large", vertical_alignment="center")
 
     with left:
-        show_if_exists("images/profile.jpeg")
+        show_if_exists("images/headshot.jpg")
 
     with right:
-        st.markdown('<div class="name">Hi, I’m Rohan 👋</div>', unsafe_allow_html=True)
+        st.markdown('<div class="name">Hi, I’m Rohan.</div>', unsafe_allow_html=True)
         st.markdown(
             """
             <div class="body-text">
-            I’m an Electrical Engineering student at Georgia Tech who’s especially interested in signal processing,
-            embedded systems, and building things that feel interactive and alive. Outside of engineering, I’m also
-            really into baking, coffee, music, and anything that makes life feel a little more fun and a little less
-            robotic.
+            I’m an Electrical Engineering student at Georgia Tech with interests in signal processing,
+            embedded systems, and building things that feel interactive and polished. Outside of engineering,
+            I’m also really into baking, coffee, music, and the kinds of small things that make everyday life
+            feel a little more interesting.
             <br><br>
-            I wanted this page to feel a little more personal, because I’m definitely not just coursework and labs.
+            I wanted this page to feel more personal, because I’m definitely not just coursework and labs.
             </div>
             """,
             unsafe_allow_html=True
@@ -122,19 +121,18 @@ with st.container(border=True):
 
 st.markdown("")
 
-# Cute interest cards
 col1, col2 = st.columns(2, gap="large")
 
 with col1:
     with st.container(border=True):
-        st.markdown('<div class="card-title">🏒 Go Canes!</div>', unsafe_allow_html=True)
+        st.markdown('<div class="card-title">Go Canes</div>', unsafe_allow_html=True)
         show_if_exists("images/canes.jpg")
         st.markdown(
             """
             <div class="card-text">
-            I’m a huge Carolina Hurricanes fan, and yes, moving away from North Carolina definitely meant leaving one
-            of my favorite things behind. Hockey is one of those things that always feels exciting to me, and being a
-            Canes fan is honestly part of my personality at this point.
+            I’m a huge Carolina Hurricanes fan, and moving away from North Carolina definitely meant leaving
+            one of my favorite things behind. Hockey has always been one of those things that feels exciting
+            to me, so being a Canes fan is honestly part of my personality at this point.
             </div>
             """,
             unsafe_allow_html=True
@@ -142,14 +140,14 @@ with col1:
 
 with col2:
     with st.container(border=True):
-        st.markdown('<div class="card-title">🐝 GT pride, unfortunately</div>', unsafe_allow_html=True)
+        st.markdown('<div class="card-title">Georgia Tech</div>', unsafe_allow_html=True)
         show_if_exists("images/gtcap.jpg")
         st.markdown(
             """
             <div class="card-text">
-            I’m very much locked into the Georgia Tech world now. My sister graduated from GT, so lowkey I was kind of
-            destined to end up here. At this point, being a Yellow Jacket feels less like a choice and more like a
-            family requirement.
+            I’m very much locked into the Georgia Tech world now. My sister graduated from GT, so lowkey I was
+            kind of destined to end up here. At this point, being a Yellow Jacket feels less like a choice and
+            more like a family requirement.
             </div>
             """,
             unsafe_allow_html=True
@@ -161,14 +159,14 @@ col3, col4 = st.columns(2, gap="large")
 
 with col3:
     with st.container(border=True):
-        st.markdown('<div class="card-title">🎷 Music & creativity</div>', unsafe_allow_html=True)
+        st.markdown('<div class="card-title">Music and creativity</div>', unsafe_allow_html=True)
         show_if_exists("images/music.jpg")
         st.markdown(
             """
             <div class="card-text">
-            Music has always been a big part of my life. I played saxophone for years, and I think that creative side
-            of me still shows up in a lot of what I build now. Even when I’m working on technical stuff, I still care
-            a lot about presentation, feel, and making things look polished.
+            Music has always been a big part of my life. I played saxophone for years, and I think that creative
+            side of me still shows up in a lot of what I build now. Even when I’m working on technical things,
+            I still care a lot about presentation, feel, and making things look polished.
             </div>
             """,
             unsafe_allow_html=True
@@ -176,7 +174,7 @@ with col3:
 
 with col4:
     with st.container(border=True):
-        st.markdown('<div class="card-title">🧁 Baking, coffee, and all that</div>', unsafe_allow_html=True)
+        st.markdown('<div class="card-title">Baking and coffee</div>', unsafe_allow_html=True)
         if os.path.exists("images/bake8.jpg"):
             st.image("images/bake8.jpg", use_container_width=True)
         elif os.path.exists("images/baby_me.jpeg"):
@@ -184,9 +182,9 @@ with col4:
         st.markdown(
             """
             <div class="card-text">
-            I’ve been baking since I was 9 years old, so at this point it’s kind of built into who I am. I also love
-            coffee and lattes, which honestly makes sense because both baking and coffee feel a little bit like small
-            daily rituals to me.
+            I’ve been baking since I was 9 years old, so at this point it’s kind of built into who I am.
+            I also really love coffee and lattes, which honestly makes sense because both baking and coffee
+            feel a little like daily rituals to me.
             </div>
             """,
             unsafe_allow_html=True
@@ -195,16 +193,16 @@ with col4:
 st.markdown("")
 
 with st.container(border=True):
-    st.markdown('<div class="card-title">Quick facts</div>', unsafe_allow_html=True)
+    st.markdown('<div class="card-title">Quick Facts</div>', unsafe_allow_html=True)
     st.markdown(
         """
-        <span class="fun-pill">Chapel Hill roots</span>
+        <span class="fun-pill">Raleigh roots</span>
         <span class="fun-pill">Georgia Tech EE</span>
         <span class="fun-pill">Signal Processing</span>
         <span class="fun-pill">Embedded Systems</span>
         <span class="fun-pill">Baking since age 9</span>
         <span class="fun-pill">Carolina Hurricanes fan</span>
-        <span class="fun-pill">Coffee / latte lover</span>
+        <span class="fun-pill">Coffee and latte lover</span>
         <span class="fun-pill">Music person</span>
         """,
         unsafe_allow_html=True
