@@ -177,7 +177,7 @@ with col4:
     with st.container(border=True):
         st.markdown('<div class="card-title">Baking and coffee</div>', unsafe_allow_html=True)
         if os.path.exists("images/bake9.jpg"):
-            st.image("images/bake8.jpg", use_container_width=True)
+            st.image("images/bake9.jpg", use_container_width=True)
         elif os.path.exists("images/baby_me.jpeg"):
             st.image("images/baby_me.jpeg", use_container_width=True)
         st.markdown(
