@@ -6,119 +6,119 @@ st.markdown("""
 <style>
 .block-container {
     max-width: none;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    padding-top: 2.2rem;
+    padding-bottom: 2.2rem;
+    padding-left: 2.8rem;
+    padding-right: 2.8rem;
 }
 
 .about-title {
     text-align: center;
-    font-size: 3.4rem;
+    font-size: 4.2rem;
     font-weight: 800;
     color: #00E5FF;
-    text-shadow: 0 0 22px rgba(0,229,255,0.45);
-    margin-bottom: 0.2rem;
+    text-shadow: 0 0 24px rgba(0,229,255,0.45);
+    margin-bottom: 0.25rem;
 }
 
 .about-subtitle {
     text-align: center;
-    font-size: 1.08rem;
+    font-size: 1.28rem;
     color: #cbd5e1;
-    margin-bottom: 2rem;
+    margin-bottom: 2.2rem;
 }
 
 .glow-line {
-    width: 170px;
-    height: 3px;
-    margin: 0 auto 2.2rem auto;
+    width: 220px;
+    height: 4px;
+    margin: 0 auto 2.5rem auto;
     background: #00E5FF;
-    box-shadow: 0 0 14px rgba(0,229,255,0.8);
+    box-shadow: 0 0 16px rgba(0,229,255,0.85);
     border-radius: 999px;
 }
 
 .hero-wrap {
     background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
     border: 1px solid rgba(0,229,255,0.18);
-    border-radius: 24px;
-    padding: 1.2rem;
+    border-radius: 26px;
+    padding: 1.3rem;
     box-shadow: 0 0 18px rgba(0,229,255,0.08);
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.6rem;
 }
 
 .info-card {
     background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
     border: 1px solid rgba(0,229,255,0.18);
-    border-radius: 22px;
-    padding: 1rem;
+    border-radius: 24px;
+    padding: 1.25rem;
     box-shadow: 0 0 18px rgba(0,229,255,0.08);
-    min-height: 610px;
+    min-height: 760px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
 .card-title {
-    font-size: 1.45rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #f8fafc;
-    margin-bottom: 0.65rem;
+    margin-bottom: 0.85rem;
 }
 
 .name {
-    font-size: 2.2rem;
-    font-weight: 750;
+    font-size: 3rem;
+    font-weight: 780;
     color: #f8fafc;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .body-text {
     color: #dbe4ee;
-    font-size: 1.03rem;
-    line-height: 1.75;
+    font-size: 1.18rem;
+    line-height: 1.9;
 }
 
 .card-text {
     color: #dbe4ee;
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 1.12rem;
+    line-height: 1.85;
 }
 
 .fun-pill {
     display: inline-block;
-    padding: 0.42rem 0.82rem;
-    margin-right: 0.45rem;
-    margin-bottom: 0.55rem;
+    padding: 0.55rem 0.95rem;
+    margin-right: 0.55rem;
+    margin-bottom: 0.65rem;
     border-radius: 999px;
     background: rgba(0,229,255,0.11);
     color: #a5f3fc;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border: 1px solid rgba(0,229,255,0.18);
 }
 
 .card-img {
     width: 100%;
-    height: 240px;
+    height: 320px;
     object-fit: cover;
-    border-radius: 16px;
-    margin-bottom: 0.9rem;
+    border-radius: 18px;
+    margin-bottom: 1rem;
 }
 
 .card-img-stack {
     width: 100%;
-    height: 155px;
+    height: 220px;
     object-fit: cover;
-    border-radius: 16px;
-    margin-bottom: 0.7rem;
+    border-radius: 18px;
+    margin-bottom: 0.8rem;
 }
 
 .quick-facts-card {
     background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
     border: 1px solid rgba(0,229,255,0.18);
-    border-radius: 22px;
-    padding: 1rem;
+    border-radius: 24px;
+    padding: 1.25rem;
     box-shadow: 0 0 18px rgba(0,229,255,0.08);
-    margin-top: 1rem;
+    margin-top: 1.2rem;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -161,8 +161,7 @@ def stacked_images_html(paths):
     return html
 
 
-# Hero
-left, right = st.columns([1, 1.45], gap="large", vertical_alignment="center")
+left, right = st.columns([1.1, 1.35], gap="large", vertical_alignment="center")
 
 with left:
     st.markdown('<div class="hero-wrap">', unsafe_allow_html=True)
@@ -189,7 +188,6 @@ with right:
 
 st.markdown("")
 
-# Row 1
 col1, col2 = st.columns(2, gap="large")
 
 with col1:
@@ -222,7 +220,6 @@ with col2:
 
 st.markdown("")
 
-# Row 2
 col3, col4 = st.columns(2, gap="large")
 
 with col3:
@@ -253,7 +250,6 @@ with col4:
     </div>
     """, unsafe_allow_html=True)
 
-# Quick facts
 st.markdown("""
 <div class="quick-facts-card">
     <div class="card-title">Quick Facts</div>
