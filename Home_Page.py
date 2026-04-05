@@ -10,33 +10,40 @@ def set_bg(image_file):
     st.markdown(f"""
     <style>
     .stApp {{
-        background-image: url("data:image/jpg;base64,{data}");
+        background-image: url("data:image/jpeg;base64,{data}");
         background-size: cover;
         background-position: center;
-        background-attachment: fixed;
         background-repeat: no-repeat;
+        background-attachment: fixed;
     }}
 
-    /* Kill the ugly top Streamlit bar */
+    /* hide streamlit top stuff */
     header[data-testid="stHeader"] {{
-        background: transparent;
-        height: 0rem;
+        display: none;
     }}
 
-    /* Hide the top-right toolbar icons too */
     div[data-testid="stToolbar"] {{
         display: none;
     }}
 
-    /* Pull the page content upward */
+    div[data-testid="stDecoration"] {{
+        display: none;
+    }}
+
+    div[data-testid="stStatusWidget"] {{
+        display: none;
+    }}
+
+    /* remove default top spacing */
     .block-container {{
-        padding-top: 0rem;
+        padding-top: 0rem !important;
         padding-bottom: 2rem;
         padding-left: 2rem;
         padding-right: 2rem;
+        max-width: none;
     }}
 
-    /* Make sure the main area stays transparent */
+    /* keep everything transparent so the image shows */
     [data-testid="stAppViewContainer"] {{
         background: transparent;
     }}
@@ -45,21 +52,23 @@ def set_bg(image_file):
         background: transparent;
     }}
 
-    /* Dark overlay over the image */
+    section[data-testid="stSidebar"] {{
+        background: rgba(7, 12, 20, 0.82);
+        backdrop-filter: blur(6px);
+    }}
+
+    /* dark overlay over the photo */
     .stApp::before {{
         content: "";
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.42);
+        inset: 0;
+        background: rgba(0, 0, 0, 0.38);
         z-index: -1;
     }}
 
     .hero {{
         text-align: center;
-        padding-top: 130px;
+        padding-top: 120px;
         padding-bottom: 80px;
     }}
 
@@ -67,7 +76,7 @@ def set_bg(image_file):
         font-size: 72px;
         font-weight: 800;
         color: #00E5FF;
-        text-shadow: 0 0 22px rgba(0,229,255,0.6);
+        text-shadow: 0 0 22px rgba(0,229,255,0.60);
     }}
 
     .subtitle {{
