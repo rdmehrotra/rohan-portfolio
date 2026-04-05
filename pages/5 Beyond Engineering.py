@@ -1,6 +1,7 @@
 import os
-from pathlib import Path
+import base64
 import streamlit as st
+from streamlit_clickable_images import clickable_images
 
 st.markdown("""
 <style>
@@ -37,133 +38,94 @@ st.markdown("""
     border-radius: 999px;
 }
 
-div[data-testid="stVerticalBlockBorderWrapper"] {
+.selected-card {
     background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
-    border: 1px solid rgba(0,229,255,0.18) !important;
-    border-radius: 20px !important;
-    padding: 1rem !important;
+    border: 1px solid rgba(0,229,255,0.18);
+    border-radius: 22px;
+    padding: 1rem;
     box-shadow: 0 0 18px rgba(0,229,255,0.08);
+    margin-bottom: 1.6rem;
 }
 
 .selected-title {
+    text-align: center;
     font-size: 1.9rem;
     font-weight: 700;
     color: #f8fafc;
-    margin-bottom: 0.35rem;
-}
-
-.selected-text {
-    color: #dbe4ee;
-    font-size: 1rem;
-    line-height: 1.7;
-}
-
-.rating-pill {
-    display: inline-block;
-    padding: 0.42rem 0.82rem;
-    margin-top: 0.9rem;
-    border-radius: 999px;
-    background: rgba(0,229,255,0.11);
-    color: #a5f3fc;
-    font-size: 0.92rem;
-    border: 1px solid rgba(0,229,255,0.18);
-}
-
-.thumb-note {
-    text-align: center;
-    color: #cbd5e1;
-    font-size: 0.95rem;
-    margin-top: 0.35rem;
-    margin-bottom: 0.5rem;
-}
-
-.gallery-gap {
-    height: 1rem;
+    margin-bottom: 0.9rem;
 }
 </style>
 """, unsafe_allow_html=True)
 
 st.markdown('<div class="gallery-title">🧁 Beyond Engineering</div>', unsafe_allow_html=True)
 st.markdown(
-    '<div class="gallery-subtitle">Click a bake below to enlarge it.</div>',
+    '<div class="gallery-subtitle">Click any photo to enlarge it.</div>',
     unsafe_allow_html=True
 )
 st.markdown('<div class="glow-line"></div>', unsafe_allow_html=True)
 
-def resolve_image(filename):
-    exact = Path("images") / filename
-    if exact.exists():
-        return str(exact)
-
-    stem = Path(filename).stem
-    for ext in [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"]:
-        candidate = Path("images") / f"{stem}{ext}"
-        if candidate.exists():
-            return str(candidate)
-
-    return None
-
 gallery_items = [
-    {"title": "Bake 1", "image": "bake 1.jpg", "caption": "Bake 1", "rating": "⭐"},
-    {"title": "Bake 2", "image": "bake 2.jpg", "caption": "Bake 2", "rating": "⭐"},
-    {"title": "Bake 3", "image": "bake 3.jpg", "caption": "Bake 3", "rating": "⭐"},
-    {"title": "Bake 4", "image": "bake 4.jpg", "caption": "Bake 4", "rating": "⭐"},
-    {"title": "Bake 5", "image": "bake 5.jpg", "caption": "Bake 5", "rating": "⭐"},
-    {"title": "Bake 6", "image": "bake 6.jpg", "caption": "Bake 6", "rating": "⭐"},
-    {"title": "Bake 7", "image": "bake 7.jpg", "caption": "Bake 7", "rating": "⭐"},
-    {"title": "Bake 8", "image": "bake 8.jpg", "caption": "Bake 8", "rating": "⭐"},
-    {"title": "Bake 9", "image": "bake 9.jpg", "caption": "Bake 9", "rating": "⭐"},
+    {"title": "Bake 1", "image": "images/bake1.jpg"},
+    {"title": "Bake 2", "image": "images/bake2.jpg"},
+    {"title": "Bake 3", "image": "images/bake3.jpg"},
+    {"title": "Bake 4", "image": "images/bake4.jpg"},
+    {"title": "Bake 5", "image": "images/bake5.jpg"},
+    {"title": "Bake 6", "image": "images/bake6.jpg"},
+    {"title": "Bake 7", "image": "images/bake7.jpg"},
+    {"title": "Bake 8", "image": "images/bake8.jpg"},
+    {"title": "Bake 9", "image": "images/bake9.jpg"},
 ]
+
+def encode_image(path):
+    with open(path, "rb") as f:
+        encoded = base64.b64encode(f.read()).decode()
+    ext = path.split(".")[-1].lower()
+    if ext == "jpg":
+        ext = "jpeg"
+    return f"data:image/{ext};base64,{encoded}"
+
+existing_items = [item for item in gallery_items if os.path.exists(item["image"])]
+
+if not existing_items:
+    st.error("No baking images were found in the images folder.")
+    st.stop()
 
 if "selected_bake_index" not in st.session_state:
     st.session_state.selected_bake_index = 0
 
-selected_item = gallery_items[st.session_state.selected_bake_index]
-selected_path = resolve_image(selected_item["image"])
+image_urls = [encode_image(item["image"]) for item in existing_items]
 
-with st.container(border=True):
-    left, right = st.columns([1.25, 1], gap="large", vertical_alignment="center")
+clicked = clickable_images(
+    image_urls,
+    titles=[item["title"] for item in existing_items],
+    div_style={
+        "display": "flex",
+        "justify-content": "center",
+        "flex-wrap": "wrap",
+        "gap": "16px",
+        "margin-bottom": "10px",
+    },
+    img_style={
+        "width": "31%",
+        "min-width": "220px",
+        "border-radius": "16px",
+        "border": "2px solid rgba(0,229,255,0.18)",
+        "box-shadow": "0 0 16px rgba(0,229,255,0.08)",
+        "cursor": "pointer",
+        "object-fit": "cover",
+    },
+    key="baking_gallery",
+)
 
-    with left:
-        if selected_path:
-            st.image(selected_path, use_container_width=True)
-        else:
-            st.error(f"Could not find image: {selected_item['image']}")
+if clicked > -1:
+    st.session_state.selected_bake_index = clicked
 
-    with right:
-        st.markdown(
-            f'<div class="selected-title">{selected_item["title"]}</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            f'<div class="selected-text">{selected_item["caption"]}</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            f'<div class="rating-pill">{selected_item["rating"]}</div>',
-            unsafe_allow_html=True
-        )
+selected_item = existing_items[st.session_state.selected_bake_index]
 
-st.markdown('<div class="gallery-gap"></div>', unsafe_allow_html=True)
-
-for row_start in range(0, len(gallery_items), 3):
-    cols = st.columns(3, gap="large")
-    row_items = gallery_items[row_start:row_start+3]
-
-    for col, item in zip(cols, row_items):
-        with col:
-            with st.container(border=True):
-                thumb_path = resolve_image(item["image"])
-                if thumb_path:
-                    st.image(thumb_path, use_container_width=True)
-                else:
-                    st.warning(f"Missing: {item['image']}")
-
-                st.markdown(
-                    f'<div class="thumb-note">{item["title"]}</div>',
-                    unsafe_allow_html=True
-                )
-
-                if st.button(f"Open {item['title']}", key=item["title"], use_container_width=True):
-                    st.session_state.selected_bake_index = gallery_items.index(item)
-                    st.rerun()
+st.markdown('<div class="selected-card">', unsafe_allow_html=True)
+st.markdown(
+    f'<div class="selected-title">{selected_item["title"]}</div>',
+    unsafe_allow_html=True
+)
+st.image(selected_item["image"], use_container_width=True)
+st.markdown('</div>', unsafe_allow_html=True)
