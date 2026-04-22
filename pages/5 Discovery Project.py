@@ -5,10 +5,7 @@ st.markdown("""
 <style>
 .block-container {
     max-width: none;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    padding-left: 2.75rem;
-    padding-right: 2.75rem;
+    padding: 2rem 2.75rem;
 }
 
 .projects-title {
@@ -17,20 +14,20 @@ st.markdown("""
     font-weight: 800;
     color: #00E5FF;
     text-shadow: 0 0 22px rgba(0,229,255,0.45);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.2rem;
 }
 
 .projects-subtitle {
     text-align: center;
     font-size: 1.08rem;
     color: #cbd5e1;
-    margin-bottom: 2.2rem;
+    margin-bottom: 2rem;
 }
 
 .glow-line {
     width: 180px;
     height: 3px;
-    margin: 0 auto 2.6rem auto;
+    margin: 0 auto 2rem auto;
     background: #00E5FF;
     box-shadow: 0 0 14px rgba(0,229,255,0.8);
     border-radius: 999px;
@@ -41,7 +38,6 @@ div[data-testid="stVerticalBlockBorderWrapper"] {
     border: 1px solid rgba(0,229,255,0.18) !important;
     border-radius: 22px !important;
     padding: 1.5rem !important;
-    box-shadow: 0 0 22px rgba(0,229,255,0.08);
 }
 
 .project-title {
@@ -54,29 +50,20 @@ div[data-testid="stVerticalBlockBorderWrapper"] {
 .project-subtitle {
     font-size: 1.05rem;
     color: #94a3b8;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1rem;
 }
 
 .project-text {
     color: #dbe4ee;
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 1.2rem;
-}
-
-.section-heading {
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: #f8fafc;
-    margin-top: 1.2rem;
-    margin-bottom: 1rem;
+    font-size: 1.02rem;
+    line-height: 1.65;
 }
 
 .tag {
     display: inline-block;
     padding: 0.42rem 0.82rem;
     margin-right: 0.45rem;
-    margin-bottom: 0.55rem;
+    margin-top: 0.6rem;
     border-radius: 999px;
     background: rgba(0,229,255,0.11);
     color: #a5f3fc;
@@ -86,91 +73,62 @@ div[data-testid="stVerticalBlockBorderWrapper"] {
 
 .image-note {
     color: #94a3b8;
-    font-size: 0.92rem;
-    margin-top: 0.6rem;
-    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
 }
 
-.coming-soon-btn {
-    display: inline-block;
-    padding: 0.85rem 1.2rem;
-    border-radius: 12px;
-    border: 1px solid rgba(0,229,255,0.18);
-    background: rgba(255,255,255,0.03);
-    color: #cbd5e1;
-    font-size: 1rem;
-    font-weight: 600;
-    box-shadow: 0 0 14px rgba(0,229,255,0.06);
+.video-section {
+    margin-top: 2rem;
 }
 </style>
 """, unsafe_allow_html=True)
 
 st.markdown('<div class="projects-title">Discovery Project</div>', unsafe_allow_html=True)
-st.markdown(
-    '<div class="projects-subtitle">A hands-on electronics build completed as part of ECE 1100.</div>',
-    unsafe_allow_html=True
-)
+st.markdown('<div class="projects-subtitle">A hands-on electronics build completed as part of ECE 1100.</div>', unsafe_allow_html=True)
 st.markdown('<div class="glow-line"></div>', unsafe_allow_html=True)
 
 def render_tags(tags):
-    tags_html = "".join([f'<span class="tag">{tag}</span>' for tag in tags])
-    st.markdown(tags_html, unsafe_allow_html=True)
+    st.markdown("".join([f'<span class="tag">{t}</span>' for t in tags]), unsafe_allow_html=True)
 
-def find_image(paths):
-    for path in paths:
-        if os.path.exists(path):
-            return path
+def find_img(paths):
+    for p in paths:
+        if os.path.exists(p):
+            return p
     return None
 
 with st.container(border=True):
-    left, right = st.columns([1.05, 1.35], gap="large")
+    left, right = st.columns([1.05, 1.25], gap="large")
 
     with left:
         st.markdown('<div class="project-title">DIY Electronic Piano Using a 555 Timer</div>', unsafe_allow_html=True)
-        st.markdown(
-            '<div class="project-subtitle">Breadboard-based sound circuit inspired by a YouTube tutorial</div>',
-            unsafe_allow_html=True
-        )
+        st.markdown('<div class="project-subtitle">Breadboard-based sound circuit inspired by a YouTube tutorial</div>', unsafe_allow_html=True)
 
-        st.markdown(
-            """
-            <div class="project-text">
-            For my ECE 1100 Discovery Project, I built a DIY electronic piano using a 555 timer circuit on a breadboard.
-            I followed a YouTube tutorial as a starting point, then worked through wiring, testing, and troubleshooting
-            to actually get the circuit to produce sound.
+        st.markdown("""
+        <div class="project-text">
+        For my ECE 1100 Discovery Project, I built a DIY electronic piano using a 555 timer circuit on a breadboard.
+        I followed a YouTube tutorial as a starting point, then worked through wiring, testing, and troubleshooting
+        to actually get the circuit to produce sound.
 
-            <br><br>
+        <br><br>
 
-            Since I’m also taking ECE 2035 (programming for hardware/software systems) and ECE 2040 (circuit analysis),
-            this project was a nice way to connect what I’m learning in class to something physical and hands-on.
-            It helped reinforce how circuit components interact while also showing how small wiring mistakes can completely
-            break a system.
+        Since I’m also taking ECE 2035 (programming for hardware/software systems) and ECE 2040 (circuit analysis),
+        this project was a nice way to connect what I’m learning in class to something physical and hands-on.
+        It helped reinforce how circuit components interact while also showing how small wiring mistakes can completely
+        break a system.
 
-            <br><br>
+        <br><br>
 
-            Overall, this was a fun introduction to building real circuits and gave me a better appreciation for the
-            hardware side of electrical engineering.
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+        Overall, this was a fun introduction to building real circuits and gave me a better appreciation for the
+        hardware side of electrical engineering.
+        </div>
+        """, unsafe_allow_html=True)
 
-        render_tags([
-            "555 Timer",
-            "Breadboarding",
-            "Circuit Design",
-            "Hardware Troubleshooting"
-        ])
-
-        st.markdown(" ")
-        st.markdown(
-            '<div class="coming-soon-btn">Tutorial-based build — no separate code repository</div>',
-            unsafe_allow_html=True
-        )
+        render_tags(["555 Timer","Breadboarding","Circuit Design","Hardware Troubleshooting"])
 
     with right:
-        img1 = find_image(["images/discovery_project.jpg", "discovery_project.jpg"])
-        img2 = find_image(["images/discovery_project_2.jpg", "discovery_project_2.jpg"])
+        img1 = find_img(["images/discovery_project.jpg","discovery_project.jpg"])
+        img2 = find_img(["images/discovery_project_2.jpg","discovery_project_2.jpg"])
 
         if img1:
             st.image(img1, use_container_width=True)
@@ -180,6 +138,6 @@ with st.container(border=True):
             st.image(img2, use_container_width=True)
             st.markdown('<div class="image-note">Additional circuit photo</div>', unsafe_allow_html=True)
 
-st.markdown('<div class="section-heading">Tutorial Video</div>', unsafe_allow_html=True)
+st.markdown('<div class="video-section"></div>', unsafe_allow_html=True)
 st.video("https://www.youtube.com/watch?v=6K89_3BDuSU&t=5s")
 st.caption("Tutorial I used as a reference for building the circuit.")
