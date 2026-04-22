@@ -154,7 +154,7 @@ with st.container(border=True):
         )
 
     with right:
-        image_path = "images/discovery_project.jpg"
+        image_path = "discovery_project.jpg"  # ✅ FIXED PATH
 
         if os.path.exists(image_path):
             st.image(image_path, use_container_width=True)
@@ -163,4 +163,4 @@ with st.container(border=True):
                 unsafe_allow_html=True
             )
         else:
-            st.info("Add image here later: images/discovery_project.jpg")
+            st.error("Image not found — make sure discovery_project.jpg is in the repo root")
