@@ -119,15 +119,24 @@ with st.container(border=True):
         st.markdown(
             """
             <div class="project-text">
-            For my ECE 1100 Discovery Project, I built a DIY electronic piano using a 555 timer circuit on a breadboard.
-            I followed a YouTube tutorial as a starting point, then worked through wiring, testing, and troubleshooting
-            to get the circuit to produce sound.
+            <b>Project Idea:</b><br>
+            For my ECE 1100 Discovery Project, I set out to build a DIY electronic piano using a 555 timer circuit on a breadboard, following a YouTube tutorial as a starting point.
+
             <br><br>
-            This project gave me hands-on experience with basic electronics like resistors, pushbuttons, and speakers,
-            while also helping me understand how simple circuits can generate different tones. It also showed me how
-            important debugging is in hardware, since small mistakes had a big impact on performance.
+            <b>Project Progress:</b><br>
+            I began by gathering components and recreating the circuit layout, then worked step-by-step through wiring the buttons, resistors, and speaker. I tested the system incrementally to understand how each part affected the output.
+
             <br><br>
-            Overall, it was a solid introduction to circuit building and strengthened my interest in hands-on electrical engineering work.
+            <b>Successes & Failures:</b><br>
+            One of the biggest challenges was troubleshooting when the circuit wouldn’t produce sound, even when the wiring looked correct. Through trial and error, I realized how sensitive hardware systems are to small mistakes. Successfully getting the circuit to generate sound was a major turning point.
+
+            <br><br>
+            <b>ECE Skills Gained:</b><br>
+            This project helped me build hands-on skills in breadboarding, circuit debugging, and understanding how components like resistors and timers interact to generate signals.
+
+            <br><br>
+            <b>Final Thoughts:</b><br>
+            Overall, this project gave me a better appreciation for hardware design and strengthened my interest in hands-on electrical engineering work. It also showed me that debugging physical systems requires patience and persistence.
             </div>
             """,
             unsafe_allow_html=True
@@ -147,22 +156,13 @@ with st.container(border=True):
         )
 
     with right:
-        possible_paths = [
-            "discovery_project.jpg",
-            "images/discovery_project.jpg"
-        ]
+        image_path = "images/discovery_project.jpg"
 
-        image_path = None
-        for path in possible_paths:
-            if os.path.exists(path):
-                image_path = path
-                break
-
-        if image_path:
+        if os.path.exists(image_path):
             st.image(image_path, use_container_width=True)
             st.markdown(
                 '<div class="image-note">Breadboard prototype of my 555 timer electronic piano project</div>',
                 unsafe_allow_html=True
             )
         else:
-            st.error("Image not found. Make sure discovery_project.jpg is either in the repo root or inside the images folder.")
+            st.error("Image not found. Make sure discovery_project.jpg is inside the images folder.")
