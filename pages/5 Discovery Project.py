@@ -68,7 +68,7 @@ div[data-testid="stVerticalBlockBorderWrapper"] {
     font-size: 1.35rem;
     font-weight: 700;
     color: #f8fafc;
-    margin-top: 0.4rem;
+    margin-top: 1.2rem;
     margin-bottom: 1rem;
 }
 
@@ -116,8 +116,8 @@ def render_tags(tags):
     tags_html = "".join([f'<span class="tag">{tag}</span>' for tag in tags])
     st.markdown(tags_html, unsafe_allow_html=True)
 
-def find_image(possible_paths):
-    for path in possible_paths:
+def find_image(paths):
+    for path in paths:
         if os.path.exists(path):
             return path
     return None
@@ -135,30 +135,21 @@ with st.container(border=True):
         st.markdown(
             """
             <div class="project-text">
-
-            <b>Project Idea:</b><br>
-            For my ECE 1100 Discovery Project, I set out to build a DIY electronic piano using a 555 timer circuit on a breadboard, following a YouTube tutorial as a starting point.
-
-            <br><br>
-
-            <b>Project Progress:</b><br>
-            I began by gathering components and recreating the circuit layout, then worked step-by-step through wiring the buttons, resistors, and speaker. I tested the system incrementally to understand how each part affected the output.
+            For my ECE 1100 Discovery Project, I built a DIY electronic piano using a 555 timer circuit on a breadboard.
+            I followed a YouTube tutorial as a starting point, then worked through wiring, testing, and troubleshooting
+            to actually get the circuit to produce sound.
 
             <br><br>
 
-            <b>Successes & Failures:</b><br>
-            One of the biggest challenges was troubleshooting when the circuit would not produce sound, even when the wiring looked correct. Through trial and error, I realized how sensitive hardware systems are to small mistakes. Successfully getting the circuit to generate sound was a major turning point.
+            Since I’m also taking ECE 2035 (programming for hardware/software systems) and ECE 2040 (circuit analysis),
+            this project was a nice way to connect what I’m learning in class to something physical and hands-on.
+            It helped reinforce how circuit components interact while also showing how small wiring mistakes can completely
+            break a system.
 
             <br><br>
 
-            <b>ECE Skills Gained:</b><br>
-            This project helped me build hands-on skills in breadboarding, circuit debugging, and understanding how components like resistors and timers interact to generate signals.
-
-            <br><br>
-
-            <b>Final Thoughts:</b><br>
-            Overall, this project gave me a better appreciation for hardware design and strengthened my interest in hands-on electrical engineering work. It also showed me that debugging physical systems requires patience and persistence.
-
+            Overall, this was a fun introduction to building real circuits and gave me a better appreciation for the
+            hardware side of electrical engineering.
             </div>
             """,
             unsafe_allow_html=True
@@ -178,35 +169,17 @@ with st.container(border=True):
         )
 
     with right:
-        image_path_1 = find_image([
-            "images/discovery_project.jpg",
-            "discovery_project.jpg"
-        ])
+        img1 = find_image(["images/discovery_project.jpg", "discovery_project.jpg"])
+        img2 = find_image(["images/discovery_project_2.jpg", "discovery_project_2.jpg"])
 
-        image_path_2 = find_image([
-            "images/discovery_project_2.jpg",
-            "discovery_project_2.jpg"
-        ])
+        if img1:
+            st.image(img1, use_container_width=True)
+            st.markdown('<div class="image-note">Breadboard prototype of my build</div>', unsafe_allow_html=True)
 
-        if image_path_1:
-            st.image(image_path_1, use_container_width=True)
-            st.markdown(
-                '<div class="image-note">Breadboard prototype of my 555 timer electronic piano project</div>',
-                unsafe_allow_html=True
-            )
-        else:
-            st.error("First image not found. Make sure discovery_project.jpg is in the images folder or repo root.")
+        if img2:
+            st.image(img2, use_container_width=True)
+            st.markdown('<div class="image-note">Additional circuit photo</div>', unsafe_allow_html=True)
 
-        if image_path_2:
-            st.image(image_path_2, use_container_width=True)
-            st.markdown(
-                '<div class="image-note">Additional circuit photo from my build process</div>',
-                unsafe_allow_html=True
-            )
-        else:
-            st.info("Optional second image not found yet. Add discovery_project_2.jpg to show another circuit photo.")
-
-st.markdown(" ")
 st.markdown('<div class="section-heading">Tutorial Video</div>', unsafe_allow_html=True)
 st.video("https://www.youtube.com/watch?v=6K89_3BDuSU&t=5s")
-st.caption("YouTube tutorial I used as a starting point for building the electronic piano.")
+st.caption("Tutorial I used as a reference for building the circuit.")
