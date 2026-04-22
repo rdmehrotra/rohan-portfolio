@@ -108,7 +108,7 @@ with st.container(border=True):
         <div class="project-text">
         <b>Project Idea:</b> Built a DIY electronic piano with a 555 timer from a YouTube tutorial, aiming to understand how the circuit actually works.<br><br>
         <b>Project Progress:</b> Set up the breadboard and wired everything step-by-step, testing and fixing connections along the way.<br><br>
-        <b>Successes & Failures:</b> Getting sound to work was tough—lots of wiring issues—but once it worked, different tones came through clearly.<br><br>
+        <b>Successes & Failures:</b> Getting sound to work was tough, unfortunately a lot of wiring issues, but once it worked, different tones came through clearly.<br><br>
         <b>ECE Skills Gained:</b> Improved breadboarding and debugging, and connected concepts from ECE 2035 and ECE 2040 to a real circuit.
         </div>
         """, unsafe_allow_html=True)
