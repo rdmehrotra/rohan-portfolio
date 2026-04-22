@@ -40,27 +40,35 @@ div[data-testid="stVerticalBlockBorderWrapper"] {
     background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
     border: 1px solid rgba(0,229,255,0.18) !important;
     border-radius: 22px !important;
-    padding: 1.15rem !important;
+    padding: 1.5rem !important;
     box-shadow: 0 0 22px rgba(0,229,255,0.08);
 }
 
 .project-title {
-    font-size: 2.15rem;
-    font-weight: 750;
+    font-size: 2.3rem;
+    font-weight: 800;
     color: #f8fafc;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
 }
 
 .project-subtitle {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: #94a3b8;
-    margin-bottom: 1.05rem;
+    margin-bottom: 1.4rem;
 }
 
 .project-text {
     color: #dbe4ee;
-    font-size: 1.03rem;
-    line-height: 1.75;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+}
+
+.section-heading {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-top: 0.4rem;
     margin-bottom: 1rem;
 }
 
@@ -79,12 +87,13 @@ div[data-testid="stVerticalBlockBorderWrapper"] {
 .image-note {
     color: #94a3b8;
     font-size: 0.92rem;
-    margin-top: 0.45rem;
+    margin-top: 0.6rem;
+    margin-bottom: 1.2rem;
 }
 
 .coming-soon-btn {
     display: inline-block;
-    padding: 0.78rem 1.15rem;
+    padding: 0.85rem 1.2rem;
     border-radius: 12px;
     border: 1px solid rgba(0,229,255,0.18);
     background: rgba(255,255,255,0.03);
@@ -107,8 +116,14 @@ def render_tags(tags):
     tags_html = "".join([f'<span class="tag">{tag}</span>' for tag in tags])
     st.markdown(tags_html, unsafe_allow_html=True)
 
+def find_image(possible_paths):
+    for path in possible_paths:
+        if os.path.exists(path):
+            return path
+    return None
+
 with st.container(border=True):
-    left, right = st.columns([1.45, 1], gap="large", vertical_alignment="center")
+    left, right = st.columns([1.05, 1.35], gap="large")
 
     with left:
         st.markdown('<div class="project-title">DIY Electronic Piano Using a 555 Timer</div>', unsafe_allow_html=True)
@@ -116,18 +131,34 @@ with st.container(border=True):
             '<div class="project-subtitle">Breadboard-based sound circuit inspired by a YouTube tutorial</div>',
             unsafe_allow_html=True
         )
+
         st.markdown(
             """
             <div class="project-text">
-            For my ECE 1100 Discovery Project, I built a DIY electronic piano using a 555 timer circuit on a breadboard.
-            I followed a YouTube tutorial as a starting point, then worked through wiring, testing, and troubleshooting
-            to get the circuit to produce sound.
+
+            <b>Project Idea:</b><br>
+            For my ECE 1100 Discovery Project, I set out to build a DIY electronic piano using a 555 timer circuit on a breadboard, following a YouTube tutorial as a starting point.
+
             <br><br>
-            This project gave me hands-on experience with basic electronics like resistors, pushbuttons, and speakers,
-            while also helping me understand how simple circuits can generate different tones. It also showed me how
-            important debugging is in hardware, since small mistakes had a big impact on performance.
+
+            <b>Project Progress:</b><br>
+            I began by gathering components and recreating the circuit layout, then worked step-by-step through wiring the buttons, resistors, and speaker. I tested the system incrementally to understand how each part affected the output.
+
             <br><br>
-            Overall, it was a solid introduction to circuit building and strengthened my interest in hands-on electrical engineering work.
+
+            <b>Successes & Failures:</b><br>
+            One of the biggest challenges was troubleshooting when the circuit would not produce sound, even when the wiring looked correct. Through trial and error, I realized how sensitive hardware systems are to small mistakes. Successfully getting the circuit to generate sound was a major turning point.
+
+            <br><br>
+
+            <b>ECE Skills Gained:</b><br>
+            This project helped me build hands-on skills in breadboarding, circuit debugging, and understanding how components like resistors and timers interact to generate signals.
+
+            <br><br>
+
+            <b>Final Thoughts:</b><br>
+            Overall, this project gave me a better appreciation for hardware design and strengthened my interest in hands-on electrical engineering work. It also showed me that debugging physical systems requires patience and persistence.
+
             </div>
             """,
             unsafe_allow_html=True
@@ -147,22 +178,35 @@ with st.container(border=True):
         )
 
     with right:
-        possible_paths = [
-            "discovery_project.jpg",
-            "images/discovery_project.jpg"
-        ]
+        image_path_1 = find_image([
+            "images/discovery_project.jpg",
+            "discovery_project.jpg"
+        ])
 
-        image_path = None
-        for path in possible_paths:
-            if os.path.exists(path):
-                image_path = path
-                break
+        image_path_2 = find_image([
+            "images/discovery_project_2.jpg",
+            "discovery_project_2.jpg"
+        ])
 
-        if image_path:
-            st.image(image_path, use_container_width=True)
+        if image_path_1:
+            st.image(image_path_1, use_container_width=True)
             st.markdown(
                 '<div class="image-note">Breadboard prototype of my 555 timer electronic piano project</div>',
                 unsafe_allow_html=True
             )
         else:
-            st.error("Image not found. Make sure discovery_project.jpg is either in the repo root or inside the images folder.")
+            st.error("First image not found. Make sure discovery_project.jpg is in the images folder or repo root.")
+
+        if image_path_2:
+            st.image(image_path_2, use_container_width=True)
+            st.markdown(
+                '<div class="image-note">Additional circuit photo from my build process</div>',
+                unsafe_allow_html=True
+            )
+        else:
+            st.info("Optional second image not found yet. Add discovery_project_2.jpg to show another circuit photo.")
+
+st.markdown(" ")
+st.markdown('<div class="section-heading">Tutorial Video</div>', unsafe_allow_html=True)
+st.video("https://www.youtube.com/watch?v=6K89_3BDuSU&t=5s")
+st.caption("YouTube tutorial I used as a starting point for building the electronic piano.")
