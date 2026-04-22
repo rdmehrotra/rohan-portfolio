@@ -82,10 +82,6 @@ div[data-testid="stVerticalBlockBorderWrapper"] {
     margin-top: 0.45rem;
 }
 
-.project-gap {
-    height: 1.2rem;
-}
-
 .coming-soon-btn {
     display: inline-block;
     padding: 0.78rem 1.15rem;
@@ -107,11 +103,9 @@ st.markdown(
 )
 st.markdown('<div class="glow-line"></div>', unsafe_allow_html=True)
 
-
 def render_tags(tags):
     tags_html = "".join([f'<span class="tag">{tag}</span>' for tag in tags])
     st.markdown(tags_html, unsafe_allow_html=True)
-
 
 with st.container(border=True):
     left, right = st.columns([1.45, 1], gap="large", vertical_alignment="center")
@@ -143,8 +137,7 @@ with st.container(border=True):
             "555 Timer",
             "Breadboarding",
             "Circuit Design",
-            "Hardware Troubleshooting",
-            "ECE 1100 Discovery Project"
+            "Hardware Troubleshooting"
         ])
 
         st.markdown(" ")
@@ -154,13 +147,22 @@ with st.container(border=True):
         )
 
     with right:
-        image_path = "discovery_project.jpg"  # ✅ FIXED PATH
+        possible_paths = [
+            "discovery_project.jpg",
+            "images/discovery_project.jpg"
+        ]
 
-        if os.path.exists(image_path):
+        image_path = None
+        for path in possible_paths:
+            if os.path.exists(path):
+                image_path = path
+                break
+
+        if image_path:
             st.image(image_path, use_container_width=True)
             st.markdown(
                 '<div class="image-note">Breadboard prototype of my 555 timer electronic piano project</div>',
                 unsafe_allow_html=True
             )
         else:
-            st.error("Image not found — make sure discovery_project.jpg is in the repo root")
+            st.error("Image not found. Make sure discovery_project.jpg is either in the repo root or inside the images folder.")
