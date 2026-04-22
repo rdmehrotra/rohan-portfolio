@@ -56,7 +56,7 @@ div[data-testid="stVerticalBlockBorderWrapper"] {
 .project-text {
     color: #dbe4ee;
     font-size: 1.02rem;
-    line-height: 1.65;
+    line-height: 1.7;
 }
 
 .tag {
@@ -106,21 +106,10 @@ with st.container(border=True):
 
         st.markdown("""
         <div class="project-text">
-        For my ECE 1100 Discovery Project, I built a DIY electronic piano using a 555 timer circuit on a breadboard.
-        I followed a YouTube tutorial as a starting point, then worked through wiring, testing, and troubleshooting
-        to actually get the circuit to produce sound.
-
-        <br><br>
-
-        Since I’m also taking ECE 2035 (programming for hardware/software systems) and ECE 2040 (circuit analysis),
-        this project was a nice way to connect what I’m learning in class to something physical and hands-on.
-        It helped reinforce how circuit components interact while also showing how small wiring mistakes can completely
-        break a system.
-
-        <br><br>
-
-        Overall, this was a fun introduction to building real circuits and gave me a better appreciation for the
-        hardware side of electrical engineering.
+        <b>Project Idea:</b> Built a DIY electronic piano with a 555 timer from a YouTube tutorial, aiming to understand how the circuit actually works.<br><br>
+        <b>Project Progress:</b> Set up the breadboard and wired everything step-by-step, testing and fixing connections along the way.<br><br>
+        <b>Successes & Failures:</b> Getting sound to work was tough—lots of wiring issues—but once it worked, different tones came through clearly.<br><br>
+        <b>ECE Skills Gained:</b> Improved breadboarding and debugging, and connected concepts from ECE 2035 and ECE 2040 to a real circuit.
         </div>
         """, unsafe_allow_html=True)
 
